@@ -10,6 +10,7 @@ env:
 - ENTITY_USER=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/user.yaml
 
 - LUET_YES=true
+- LUET_NOLOCK=true
 steps:
 - luet install utils/yq
 - mkdir -p /{{ .Values.name }}/etc/entities/{{ .Values.name }}

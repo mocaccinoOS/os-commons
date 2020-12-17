@@ -4,6 +4,7 @@ requires:
   version: ">=0"
 env:
 - LUET_YES=true
+- LUET_NOLOCK=true
 prelude:
 - luet install vcs/git utils/ca-certificates
 - git clone https://github.com/ivandavidov/minimal.git
