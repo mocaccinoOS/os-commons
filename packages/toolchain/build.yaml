@@ -1,6 +1,7 @@
 image: "quay.io/mocaccino/micro:latest"
 prelude:
 - |
+   luet install repository/mocaccino-extra-stable && \
    luet install \
    utils/autoconf utils/yq utils/jq utils/curl development/make libs/zlib vcs/git \
    development/automake development/pkg-config development/m4 \
