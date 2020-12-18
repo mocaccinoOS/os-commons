@@ -1,3 +1,7 @@
 #!/bin/sh
 
+if [ ! -d "/var/log/k3s" ]; then
+  mkdir /var/log/k3s
+fi
+
 exec svlogd -tt /var/log/k3s

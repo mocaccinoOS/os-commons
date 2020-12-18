@@ -1,3 +1,7 @@
 #!/bin/sh
 
+if [ ! -d "/var/log/dockerd" ]; then
+  mkdir /var/log/dockerd
+fi
+
 exec svlogd -tt /var/log/dockerd

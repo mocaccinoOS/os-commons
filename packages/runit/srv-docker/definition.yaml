@@ -1,6 +1,6 @@
 name: docker
 category: runit-srv
-version: "20201206"
+version: "20201219"
 requires:
 - name: e2fsprogs
   category: utils
