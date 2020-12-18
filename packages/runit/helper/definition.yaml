@@ -1,0 +1,4 @@
+name: "runit-helper"
+category: "utils"
+version: "0.1"
+description: "Dramatically simple runit helper to start/stop and enable/disable services"

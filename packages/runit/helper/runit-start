@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -ex
+
+ln -s /etc/sv/$1 /run/runit/runsvdir/current/$1

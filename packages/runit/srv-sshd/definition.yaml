@@ -1,4 +1,4 @@
-name: udhcpc
+name: sshd
 category: runit-srv
 version: "20201218"
 

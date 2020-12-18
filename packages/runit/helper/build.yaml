@@ -1,0 +1,4 @@
+steps:
+- chmod +x runit-*
+- mv runit-* /usr/sbin/
+image: quay.io/mocaccino/extra

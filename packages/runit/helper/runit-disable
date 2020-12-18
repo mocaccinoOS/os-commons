@@ -1,0 +1,7 @@
+#!/bin/sh
+
+PROFILE="${PROFILE:-default}"
+
+set -ex
+
+rm -rf /etc/runit/runsvdir/${PROFILE}/$1
