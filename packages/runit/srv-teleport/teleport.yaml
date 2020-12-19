@@ -1,0 +1,8 @@
+teleport:
+  data_dir: /var/lib/teleport
+  auth_token: ""
+  auth_servers:
+      - 
+  log:
+    output: stderr
+    severity: INFO

@@ -1,0 +1,8 @@
+name: teleport
+category: runit-srv
+version: "20201219"
+
+requires:
+- category: "utils"
+  name: "teleport"
+  version: ">=0"

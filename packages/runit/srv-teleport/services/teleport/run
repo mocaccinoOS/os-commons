@@ -1,0 +1,10 @@
+#!/bin/sh
+
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+echo 'teleport starting.'
+
+LANG=C LC_ALL=C \
+exec /usr/bin/teleport start --roles=node --config=/etc/teleport.yaml --pid-file=/run/teleport.pid 2>&1
