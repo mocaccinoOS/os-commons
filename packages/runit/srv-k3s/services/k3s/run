@@ -16,6 +16,8 @@ if [ ! -d "/var/lib/rancher" ]; then
  if [ -n "$img" ] && [ -e "$img" ]; then
     mount -t ext4 -o loop "$img" /var/lib/rancher
   fi
+else
+  modprobe overlay
 fi
 
 echo 'k3s starting.'
