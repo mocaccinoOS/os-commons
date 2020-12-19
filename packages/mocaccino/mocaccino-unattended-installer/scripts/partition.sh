@@ -16,7 +16,7 @@ EOF
 
 echo "Partitioning ${INSTALL_DEVICE}"
 
-dd if=/dev/zero of=${INSTALL_DEVICE} bs=4M
+dd if=/dev/zero of=${INSTALL_DEVICE} bs=4M count=100
 
 sgdisk \
   -n 1:0:+128M -t 1:8300 -c 1:"linux-boot" \
