@@ -83,6 +83,8 @@ modprobe virtio_blk 2>/dev/null
 modprobe virtio_pci 2>/dev/null
 modprobe part_msdos 2>/dev/null
 modprobe usbms 2>/dev/null
+modprobe usbhid 2>/dev/null
+modprobe hid-generic 2>/dev/null
 
 rootfstype=auto
 
