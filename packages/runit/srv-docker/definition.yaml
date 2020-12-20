@@ -1,4 +1,4 @@
-name: docker
+name: dockerd
 category: runit-srv
 version: "20201220+1"
 requires:
