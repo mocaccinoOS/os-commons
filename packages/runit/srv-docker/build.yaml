@@ -3,7 +3,7 @@ requires:
   name: "toolchain"
   version: ">=0"
 
-package_dir: /docker
+package_dir: /{{.Values.name}}
 prelude:
 - |
    mkdir -p /${PACKAGE_NAME}/etc/sv && \
