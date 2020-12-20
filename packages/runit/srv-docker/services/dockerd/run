@@ -21,4 +21,4 @@ fi
 echo 'dockerd starting.'
 
 LANG=C LC_ALL=C \
-exec /usr/bin/dockerd r2>&1
+exec /usr/bin/dockerd 2>&1

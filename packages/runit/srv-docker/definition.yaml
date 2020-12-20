@@ -1,12 +1,15 @@
 name: docker
 category: runit-srv
-version: "20201219"
+version: "20201220"
 requires:
 - name: e2fsprogs
   category: utils
   version: ">=0"
 - name: iptables
   category: networking
+  version: ">=0"
+- name: docker
+  category: container
   version: ">=0"
 labels:
   #  github.repo: "void-runit"
