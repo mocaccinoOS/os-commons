@@ -1,0 +1,10 @@
+#!/bin/sh
+
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+echo 'wg starting.'
+
+LANG=C LC_ALL=C \
+exec /usr/bin/wg-quick up $INTERFACE 2>&1

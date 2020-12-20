@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -d "/var/log/wg" ]; then
+  mkdir /var/log/wg
+fi
+
+exec svlogd -tt /var/log/wg
