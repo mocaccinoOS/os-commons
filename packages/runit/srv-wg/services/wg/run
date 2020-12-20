@@ -7,4 +7,6 @@ exec 2>&1
 echo 'wg starting.'
 
 LANG=C LC_ALL=C \
-exec /usr/bin/wg-quick up $INTERFACE 2>&1
+/usr/bin/wg-quick up $INTERFACE 2>&1
+
+exec pause
