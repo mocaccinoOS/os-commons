@@ -1,3 +1,7 @@
 name: wg
 category: runit-srv
 version: "20201220"
+requires:
+- name: "wireguard-tools"
+  category: "networking"
+  version: ">=0"
