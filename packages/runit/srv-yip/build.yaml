@@ -13,3 +13,17 @@ steps:
 - cp -rfv yipfiles/*.yaml /integration/etc/yip.d/
 - cp -rfv yip-init /integration/usr/bin/
 - chmod +x /integration/usr/bin/yip-init
+
+- cp -rfv yip-reconcile /integration/usr/bin/
+- chmod +x /integration/usr/bin/yip-reconcile
+
+- cp -rfv services/* /integration/etc/sv/
+#- cp -rfv runlevel/* /${PACKAGE_NAME}/etc/runit/runsvdir
+- mkdir -p /integration/var/log/yip
+
+
+prelude:
+- |
+   mkdir -p /integration/etc/sv && \
+   mkdir -p /integration/etc/runit/runsvdir
+

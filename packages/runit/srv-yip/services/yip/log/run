@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -d "/var/log/yip" ]; then
+  mkdir /var/log/yip
+fi
+
+exec svlogd -tt /var/log/yip

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+SLEEP_TIME=${SLEEP_TIME:-360}
+
+while :
+do
+    /usr/bin/yip-init "reconcile"
+	sleep "$SLEEP_TIME"
+done

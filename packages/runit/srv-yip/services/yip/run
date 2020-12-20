@@ -1,0 +1,10 @@
+#!/bin/sh
+
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+echo 'yip-reconcile starting.'
+
+LANG=C LC_ALL=C \
+exec /usr/bin/yip-reconcile 2>&1
