@@ -16,6 +16,8 @@ EOF
 
 echo "Partitioning ${INSTALL_DEVICE}"
 
+wipefs -af ${INSTALL_DEVICE}
+
 dd if=/dev/zero of=${INSTALL_DEVICE} bs=4M count=100
 
 sgdisk \
