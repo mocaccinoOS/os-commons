@@ -5,29 +5,29 @@ if [ ! -e "/etc/fstab" ]; then
 fi
 
 if [ ! -e "/etc/passwd" ]; then
-	cp -rfv /etc/skel/etc/passwd /etc/passwd
-	entities apply -f /etc/passwd /etc/skel/entities/root_passwd.yaml
+	cp -rfv /etc/skel.defaults/etc/passwd /etc/passwd
+	entities apply -f /etc/passwd /etc/skel.defaults/entities/root_passwd.yaml
 fi
 
 if [ ! -e "/etc/shadow" ]; then
-	cp -rfv /etc/skel/etc/shadow /etc/shadow
-	entities apply -f /etc/shadow /etc/skel/entities/root_shadow.yaml
+	cp -rfv /etc/skel.defaults/etc/shadow /etc/shadow
+	entities apply -f /etc/shadow /etc/skel.defaults/entities/root_shadow.yaml
 fi
 
 if [ ! -e "/etc/hosts" ]; then
-	cp -rfv /etc/skel/etc/hosts /etc/hosts
+	cp -rfv /etc/skel.defaults/etc/hosts /etc/hosts
 fi
 
 if [ ! -e "/etc/group" ]; then
-	cp -rfv /etc/skel/etc/group /etc/group
+	cp -rfv /etc/skel.defaults/etc/group /etc/group
 fi
 
 if [ ! -e "/etc/hostname" ]; then
-	cp -rfv /etc/skel/etc/hostname /etc/hostname
+	cp -rfv /etc/skel.defaults/etc/hostname /etc/hostname
 fi
 
 if [ ! -e "/etc/profile" ]; then
-	cp -rfv /etc/skel/etc/profile /etc/profile
+	cp -rfv /etc/skel.defaults/etc/profile /etc/profile
 fi
 
 if [ ! -e "/etc/issue" ]; then
