@@ -14,6 +14,10 @@ if [ ! -e "/etc/shadow" ]; then
 	entities apply -f /etc/shadow /etc/skel.defaults/entities/root_shadow.yaml
 fi
 
+if [ -e "/etc/gshadow" ]; then
+	chmod 644 /etc/gshadow
+fi
+
 if [ ! -e "/etc/hosts" ]; then
 	cp -rfv /etc/skel.defaults/etc/hosts /etc/hosts
 fi
