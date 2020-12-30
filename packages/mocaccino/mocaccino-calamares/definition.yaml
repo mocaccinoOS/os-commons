@@ -1,3 +1,7 @@
 category: "system"
 name: "mocaccino-calamares"
 version: "0.20201230+1"
+requires:
+- category: "app-admin"
+  name: "calamares"
+  version: ">=0"
