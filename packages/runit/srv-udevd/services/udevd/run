@@ -6,5 +6,7 @@ exec 2>&1
 
 echo 'udevd starting.'
 
+udevadm hwdb --update || :
+
 udevadm control --exit
 exec udevd 2>&1
