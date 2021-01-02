@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -d "/var/log/udevd" ]; then
+  mkdir /var/log/udevd
+fi
+
+exec svlogd -tt /var/log/udevd

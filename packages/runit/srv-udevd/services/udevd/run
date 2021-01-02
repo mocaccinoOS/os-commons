@@ -1,0 +1,10 @@
+#!/bin/sh
+
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+echo 'udevd starting.'
+
+udevadm control --exit
+exec udevd 2>&1
