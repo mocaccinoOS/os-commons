@@ -126,7 +126,7 @@ export LUET_CONFIG="${LUET_CONFIG:-/etc/luet/luet.yaml}"
 # Try to grab current kernel package name, excluding modules
 CURRENT_KERNEL_PACKAGE_NAME=$(luet search --installed kernel --output json | jq -r '.packages[] | select( .category == "kernel" ) | select( .name | test("modules") | not).name')
 MINIMAL_NAME="${CURRENT_KERNEL_PACKAGE_NAME/full/minimal}"
-export INITRAMFS_PACKAGES="${INITRAMFS_PACKAGES:-utils/busybox kernel/$MINIMAL_NAME system/mocaccino-init system/mocaccino-live-boot init/mocaccino-skel}"
+export INITRAMFS_PACKAGES="${INITRAMFS_PACKAGES:-utils/busybox kernel/$MINIMAL_NAME system/mocaccino-init system/mocaccino-live-boot init/mocaccino-skel system/kmod}"
 
 if [[ -z $SCRIPTS ]]
 then
