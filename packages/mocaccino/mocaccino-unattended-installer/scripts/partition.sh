@@ -31,7 +31,9 @@ sync
 
 mkfs.ext2 ${INSTALL_DEVICE}1
 mkfs.ext4 ${INSTALL_DEVICE}4
-
+if [ -e "/sys/firmware/efi" ]; then
+  mkfs.vfat ${INSTALL_DEVICE}2
+fi
 mkswap ${INSTALL_DEVICE}3 && swapon ${INSTALL_DEVICE}3
 
 mkdir ${TARGET}

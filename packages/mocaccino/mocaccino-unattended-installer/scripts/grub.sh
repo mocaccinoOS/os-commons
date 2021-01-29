@@ -44,9 +44,14 @@ menuentry "MocaccinoOS" {
 EOF
 
 # grub-mkconfig -o /boot/grub/grub.cfg
+GRUB_TARGET=
+if [ -e "/sys/firmware/efi" ]; then
+  GRUB_TARGET="--target=x86_64-efi --efi-dir=/boot/efi"
+  mkdir -p ${TARGET}/boot/efi
+fi
 
 chroot ${TARGET} /bin/sh <<EOF
 echo "GRUB_CMDLINE_LINUX_DEFAULT=\"root=${INSTALL_DEVICE}4\"" >> /etc/default/grub
-grub-install ${INSTALL_DEVICE}
+grub-install ${GRUB_TARGET} ${INSTALL_DEVICE}
 EOF
 
