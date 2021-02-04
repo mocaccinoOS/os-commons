@@ -50,6 +50,8 @@ system:
   database_path: "/var/luet/db"
   database_engine: "boltdb"
   tmpdir_base: "/var/tmp/luet"
+repos_confdir:
+  - /etc/luet/repos.conf.d
 repositories:
 - name: "mocaccino-repository-index"
   description: "MocaccinoOS Repository index"
