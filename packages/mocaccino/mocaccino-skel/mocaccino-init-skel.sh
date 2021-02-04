@@ -34,6 +34,35 @@ if [ ! -e "/etc/profile" ]; then
 	cp -rfv /etc/skel.defaults/etc/profile /etc/profile
 fi
 
+if [ ! -d "/etc/luet" ]; then
+	mkdir /etc/luet
+fi
+
+if [ ! -e "/etc/luet/luet.yaml" ]; then
+
+cat >> /etc/luet/luet.yaml << EOF
+general:
+  debug: false
+  spinner_charset: 11
+  color: false
+  enable_emoji: false
+system:
+  database_path: "/var/luet/db"
+  database_engine: "boltdb"
+  tmpdir_base: "/var/tmp/luet"
+repositories:
+- name: "mocaccino-repository-index"
+  description: "MocaccinoOS Repository index"
+  type: "http"
+  enable: true
+  cached: true
+  priority: 1
+  urls:
+  - "https://get.mocaccino.org/mocaccino-repository-index"
+EOF
+
+fi
+
 if [ ! -e "/etc/issue" ]; then
 cat > /etc/issue << MOCHA
         ..
