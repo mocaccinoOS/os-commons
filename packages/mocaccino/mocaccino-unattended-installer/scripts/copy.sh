@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e 
-
+DISTRO=/tmp/mnt/image
 
 cat <<'EOF'
   /~\
@@ -62,8 +62,8 @@ if [ -n "$ROOTFS_PACKAGES" ]; then
     echo "Installing packages ${ROOTFS_PACKAGES}"
     luet_install "${TARGET}" "$ROOTFS_PACKAGES"
 else
-    echo "Rsyncing / to ${TARGET}"
-    rsync -aqz --exclude='mnt' --exclude='proc' --exclude='sys' --exclude='dev' --exclude='tmp' / ${TARGET}
+    echo "Copying MocaccinoOS to ${TARGET}"
+    rsync -aqz --exclude='mnt' --exclude='proc' --exclude='sys' --exclude='dev' --exclude='tmp' ${DISTRO}/ ${TARGET}
 fi
 
 if [ -n "$TO_REMOVE" ]; then
