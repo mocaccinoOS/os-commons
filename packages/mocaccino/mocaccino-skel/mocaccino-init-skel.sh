@@ -30,6 +30,10 @@ if [ ! -e "/etc/hostname" ]; then
 	cp -rfv /etc/skel.defaults/etc/hostname /etc/hostname
 fi
 
+if [ ! -e "/etc/resolv.conf" ] || [ -z "$(cat /etc/resolv.conf)" ]; then
+	echo "nameserver 8.8.8.8" > /etc/resolv.conf
+fi
+
 if [ ! -e "/etc/profile" ]; then
 	cp -rfv /etc/skel.defaults/etc/profile /etc/profile
 fi
