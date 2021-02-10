@@ -8,3 +8,7 @@ ${INSTALL_DEVICE}4	/	ext4	noatime		0 1
 ${INSTALL_DEVICE}3	none	swap	sw		0 0
 DATA
 EOF
+
+if [ -e "/sys/firmware/efi" ]; then
+  echo "${INSTALL_DEVICE}2 /boot/efi vfat defaults 0 0" >> ${TARGET}/etc/fstab
+fi
