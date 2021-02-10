@@ -3,7 +3,7 @@
 
 name: "unattended-install"
 category: mocaccino
-version: "0.14"
+version: "0.15"
 
 requires:
 - name: gptfdisk
