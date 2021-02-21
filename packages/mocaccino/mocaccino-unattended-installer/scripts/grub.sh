@@ -23,11 +23,13 @@ export KERNEL_GRUB=${CURRENT_KERNEL/${BOOTDIR}/}
 export INITRAMFS=${CURRENT_KERNEL/kernel/initramfs}
 export INITRAMFS_GRUB=${INITRAMFS/${BOOTDIR}/}
 
-luet geninitramfs "${INITRAMFS_PACKAGES}"
-pushd $TARGET/boot/
-rm -rf Initrd
-ln -s initramfs* Initrd
-popd
+if [[ ! -e "$TARGET/boot/Initrd" ]] || [[ -L "$TARGET/boot/Initrd" ]]; then
+  luet geninitramfs "${INITRAMFS_PACKAGES}"
+  pushd $TARGET/boot/
+  rm -rf Initrd
+  ln -s initramfs* Initrd
+  popd
+fi
 
 mkdir -p ${TARGET}/boot/grub
 cat > ${TARGET}/boot/grub/grub.cfg << EOF
@@ -38,8 +40,8 @@ set gfxpayload=keep
 insmod all_video
 insmod gfxterm
 menuentry "MocaccinoOS" {
-  linux /$KERNEL_GRUB root=${INSTALL_DEVICE}4
-  initrd /$INITRAMFS_GRUB
+  linux /bzImage root=${INSTALL_DEVICE}4
+  initrd /Initrd
 }
 EOF
 
