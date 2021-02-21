@@ -23,7 +23,7 @@ export KERNEL_GRUB=${CURRENT_KERNEL/${BOOTDIR}/}
 export INITRAMFS=${CURRENT_KERNEL/kernel/initramfs}
 export INITRAMFS_GRUB=${INITRAMFS/${BOOTDIR}/}
 
-if [[ ! -e "$TARGET/boot/Initrd" ]] || [[ -L "$TARGET/boot/Initrd" ]]; then
+if [[ "$MOCACCINO_RELEASE" == "micro" ]]; then
   luet geninitramfs "${INITRAMFS_PACKAGES}"
   pushd $TARGET/boot/
   rm -rf Initrd

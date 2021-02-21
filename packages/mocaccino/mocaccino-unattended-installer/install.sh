@@ -122,6 +122,7 @@ export INSTALL_DEVICE="${INSTALL_DEVICE:-/dev/sda}"
 export TARGET="${TARGET:-/mnt/mocaccino}"
 export LUET_BIN="${LUET_BIN:-/usr/bin/luet}"
 export LUET_CONFIG="${LUET_CONFIG:-/etc/luet/luet.yaml}"
+export MOCACCINO_RELEASE=$(cat /etc/mocaccino/release)
 
 # Try to grab current kernel package name, excluding modules
 CURRENT_KERNEL_PACKAGE_NAME=$(luet search --installed kernel --output json | jq -r '.packages[] | select( .category == "kernel" ) | select( .name | test("modules") | not).name')
