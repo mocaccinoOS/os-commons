@@ -1,8 +1,8 @@
 name: yip
 category: runit-srv
-version: "20201220"
+version: "20210313"
 
 requires:
 - category: "utils"
   name: "yip"
-  version: ">=0"
+  version: ">=0.7.3"

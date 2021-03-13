@@ -1,0 +1,9 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+package_dir: /integration
+steps:
+- mkdir -p /integration/etc/mocaccino/profiles
+- cp -rfv defaults /integration/etc/mocaccino/profiles

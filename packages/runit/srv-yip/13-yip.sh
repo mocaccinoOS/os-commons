@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec /usr/bin/yip-init "boot"
+/usr/bin/yip-init "boot"

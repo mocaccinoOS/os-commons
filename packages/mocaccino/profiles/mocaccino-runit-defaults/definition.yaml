@@ -1,6 +1,6 @@
-name: yip-systemd
-category: utils
-version: "0.2"
+name: default
+category: system-profile
+version: "0.1"
 
 requires:
 - category: "utils"
