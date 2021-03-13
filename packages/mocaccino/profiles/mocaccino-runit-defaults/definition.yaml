@@ -1,6 +1,6 @@
 name: default
 category: system-profile
-version: "0.1"
+version: "0.2"
 
 requires:
 - category: "utils"
