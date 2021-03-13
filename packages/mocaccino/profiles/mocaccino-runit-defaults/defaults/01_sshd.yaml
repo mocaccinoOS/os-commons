@@ -1,5 +1,5 @@
 stages:
-  boot:
+  boot.after:
        -  name: "sshd_config setup"
           commands: 
           - chmod 644 /etc/ssh/sshd_config
