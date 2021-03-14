@@ -4,15 +4,14 @@ requires:
   version: ">=0"
 package_dir: /{{ .Values.name }}
 env:
-{{- if .Values.group }}
 - ENTITY_GROUP=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/group.yaml
-{{- end}}
 - ENTITY_USER=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/user.yaml
+- ENTITY_GROUPADD=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/group_add.yaml
 
 - LUET_YES=true
 - LUET_NOLOCK=true
 steps:
-- luet install utils/yq
+- luet install -y utils/yq
 - mkdir -p /{{ .Values.name }}/etc/entities/{{ .Values.name }}
 {{- if .Values.group }}
 - touch $ENTITY_GROUP
@@ -20,6 +19,12 @@ steps:
 - yq w -i ${ENTITY_GROUP} kind group
 - yq w -i ${ENTITY_GROUP} group_name {{ .Values.name }}
 - yq w -i ${ENTITY_GROUP} users {{ .Values.name }}
+{{- end }}
+{{- if .Values.groupadd }}
+- touch $ENTITY_GROUPADD
+- yq w -i ${ENTITY_GROUPADD} kind group
+- yq w -i ${ENTITY_GROUPADD} group_name {{ .Values.groupadd }}
+- yq w -i ${ENTITY_GROUPADD} users {{ .Values.name }}
 {{- end }}
 - touch $ENTITY_USER
 - yq w -i $ENTITY_USER uid {{.Values.uid}}
