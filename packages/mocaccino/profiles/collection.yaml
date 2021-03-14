@@ -1,0 +1,15 @@
+packages:
+
+- name: default-runit
+  category: system-profile
+  version: "0.3"
+  requires:
+  - &yip
+    category: "utils"
+    name: "yip"
+    version: ">=0.7.3"
+- name: default-systemd
+  category: system-profile
+  version: "0.3"
+  requires:
+  - <<: *yip

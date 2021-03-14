@@ -1,8 +1,0 @@
-name: default
-category: system-profile
-version: "0.2"
-
-requires:
-- category: "utils"
-  name: "yip"
-  version: ">=0.7.3"

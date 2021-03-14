@@ -6,4 +6,4 @@ requires:
 package_dir: /integration
 steps:
 - mkdir -p /integration/etc/mocaccino/profiles
-- cp -rfv defaults /integration/etc/mocaccino/profiles
+- cp -rfv profiles/{{.Values.name}}.yaml /integration/etc/mocaccino/profiles
