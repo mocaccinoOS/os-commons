@@ -713,10 +713,6 @@ packages:
   name: "postgres"
 
 - <<: *group
-  description: ""
-  name: "postmaster"
-
-- <<: *group
   description: "A privoxy: privacy oriented web proxy group"
   name: "privoxy"
 
