@@ -13,7 +13,9 @@ groups:
 # For add a new group:
 # * add the entry here
 # * add the entry on collection.yaml
-
+#
+# Also see: https://wiki.gentoo.org/wiki/Project:Quality_Assurance/UID_GID_Assignment
+#
   adm:
     gid: 4
 
@@ -34,6 +36,9 @@ groups:
 
   mail:
     gid: 12
+
+  postmaster:
+    gid: 14
 
   man:
     gid: 15
