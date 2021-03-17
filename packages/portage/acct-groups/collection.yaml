@@ -934,6 +934,10 @@ packages:
 
 - <<: *group
   description: ""
+  name: "systemd-oom"
+
+- <<: *group
+  description: ""
   name: "tape"
 
 - <<: *group
