@@ -234,6 +234,9 @@ groups:
   cgit:
     gid: 197
 
+  systemd-oom:
+    gid: 198
+
   ipsec:
     gid: 199
 
