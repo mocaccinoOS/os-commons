@@ -10,6 +10,11 @@ packages:
     version: ">=0.7.3"
 - name: default-systemd
   category: system-profile
-  version: "0.3"
+  version: "0.4"
+  requires:
+  - <<: *yip
+- name: ssh-systemd
+  category: system-profile
+  version: "0.4"
   requires:
   - <<: *yip

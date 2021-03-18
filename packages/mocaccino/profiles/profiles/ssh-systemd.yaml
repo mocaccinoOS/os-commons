@@ -1,0 +1,23 @@
+stages:
+  boot:
+       -  name: "sshd_config setup"
+          commands: 
+          - chmod 644 /etc/ssh/sshd_config
+          files:
+          - path: "/etc/ssh/sshd_config"
+            owner: 0
+            group: 0
+            permission: 644
+            content: |
+                      AuthorizedKeysFile %h/.ssh/authorized_keys
+                      PermitRootLogin yes
+                      ListenAddress 0.0.0.0
+                      PubkeyAuthentication yes
+                      PasswordAuthentication yes
+                      ChallengeResponseAuthentication no
+                      Banner /etc/issue
+       - name: "Start sshd"
+         systemctl:
+          start:
+          - sshd
+name: "sshd"
