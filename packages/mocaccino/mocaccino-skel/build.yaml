@@ -14,5 +14,5 @@ steps:
 - cp -rfv os-release /${PACKAGE_NAME}/etc
 - mkdir /${PACKAGE_NAME}/mnt && touch /${PACKAGE_NAME}/mnt/.keep
 - mkdir -p /${PACKAGE_NAME}/etc/luet/config.protect.d
-- cp -rf luet.yaml /etc/luet/luet.yaml
-- cp -rf 01_etc.yml /etc/luet/config.protect.d/01_etc.yml
+- cp -rf luet.yaml /${PACKAGE_NAME}/etc/luet/luet.yaml
+- cp -rf 01_etc.yml /${PACKAGE_NAME}/etc/luet/config.protect.d/01_etc.yml
