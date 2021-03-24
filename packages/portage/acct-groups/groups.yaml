@@ -258,6 +258,9 @@ groups:
   cmd5checkpw:
     gid: 212
 
+  sddm:
+    gid: 219
+
   uptimed:
     gid: 220
 
