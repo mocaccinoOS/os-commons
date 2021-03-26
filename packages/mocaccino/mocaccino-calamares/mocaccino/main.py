@@ -156,18 +156,6 @@ def setup_audio(root_install_path):
         shutil.copy2(asound_state_orig, asound_state_alsa_dest_1)
         shutil.copy2(asound_state_orig, asound_state_alsa_dest_2)
 
-
-def setup_xorg(root_install_path):
-    # Copy current xorg.conf
-    live_xorg_conf = '/etc/X11/xorg.conf'
-    if not os.path.isfile(live_xorg_conf):
-        return
-    xorg_conf = root_install_path + live_xorg_conf
-    if os.path.isfile(xorg_conf):
-        shutil.move(xorg_conf, xorg_conf + '.original')
-    shutil.copy2(live_xorg_conf, xorg_conf)
-
-
 def configure_services(root_install_path):
     def is_virtualbox():
         """
@@ -343,7 +331,6 @@ def run():
     set_grub_background()
     setup_locales(install_path)
     setup_audio(install_path)
-    setup_xorg(install_path)
     configure_services(install_path)
     remove_proprietary_drivers(install_path)
     setup_nvidia_legacy(install_path)
