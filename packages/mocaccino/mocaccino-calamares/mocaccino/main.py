@@ -185,56 +185,6 @@ def configure_services(root_install_path):
         shutil.rmtree(install_data_dir, True)
 
 
-def remove_proprietary_drivers(root_install_path):
-    def get_opengl():
-        if root_install_path is None:
-            oglprof = os.getenv('OPENGL_PROFILE')
-            if oglprof:
-                return oglprof
-        ogl_path = '' if root_install_path is None else str(
-            root_install_path) + '/etc/env.d/000opengl'
-        if os.path.isfile(ogl_path) and os.access(ogl_path, os.R_OK):
-            with open(ogl_path, 'r') as f:
-                cont = [x.strip() for x in f.readlines() if \
-                        x.strip().startswith('OPENGL_PROFILE')]
-                if cont:
-                    xprofile = cont[-1]
-                    if 'nvidia' in xprofile:
-                        return 'nvidia'
-        return 'xorg-x11'
-
-    bb_enabled = os.path.exists('/tmp/.bumblebee.enabled')
-
-    xorg_x11 = get_opengl() == 'xorg-x11'
-
-    if xorg_x11 and not bb_enabled:
-        libcalamares.utils.target_env_call(
-            ['rm', '-rf', '/usr/lib/opengl/ati'])
-        libcalamares.utils.target_env_call(
-            ['rm', '-rf', '/usr/lib/opengl/nvidia'])
-        libcalamares.utils.target_env_call(
-            ['luet', 'uninstall', '--nodeps', '--force', 'nvidia-settings'])
-        libcalamares.utils.target_env_call(
-            ['luet', 'uninstall', '--nodeps', '--force', 'nvidia-drivers'])
-        libcalamares.utils.target_env_call(
-            ['luet', 'uninstall', '--nodeps', '--force', 'nvidia-userspace'])
-
-    # bumblebee support
-    if bb_enabled:
-        libcalamares.utils.target_env_call(
-            ['systemctl', '--no-reload', 'enable', 'bumblebeed.service'])
-
-        udev_bl = root_install_path + '/etc/modprobe.d/bbswitch-blacklist.conf'
-        with open(udev_bl, 'w') as bl_f:
-            bl_f.write("""
-            # Added by the Sabayon Installer to avoid a race condition
-            # between udev loading nvidia.ko or nouveau.ko and bbswitch,
-            # which wants to manage the driver itself.
-            blacklist nvidia
-            blacklist nouveau
-            """)
-
-
 def setup_nvidia_legacy(root_install_path):
     running_file = '/lib/nvidia/legacy/running'
     drivers_dir = '/install-data/drivers'
@@ -332,7 +282,6 @@ def run():
     setup_locales(install_path)
     setup_audio(install_path)
     configure_services(install_path)
-    remove_proprietary_drivers(install_path)
     setup_nvidia_legacy(install_path)
     libcalamares.utils.target_env_call(['env-update'])
 
