@@ -186,7 +186,7 @@ def configure_services(root_install_path):
 
 def run():
     """ Mocaccino Calamares Post-install module """
-    libcalamares.utils.target_env_call(['mocaccino-dracut', '--rebuild-all'])
+    libcalamares.utils.target_env_call(['mocaccino-dracut', '--rebuild-all', '--force'])
     # Get install path
     install_path = libcalamares.globalstorage.value('rootMountPoint')
     set_grub_background()
