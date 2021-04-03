@@ -1,0 +1,8 @@
+image: "quay.io/mocaccino/extra:latest"
+
+package_dir: /{{ .Values.name }}
+prelude:
+- |
+   mkdir -p /{{ .Values.name }}/usr/share/grub/
+steps:
+- cp -rfv images/ /{{ .Values.name }}/usr/share/grub/mocaccino/

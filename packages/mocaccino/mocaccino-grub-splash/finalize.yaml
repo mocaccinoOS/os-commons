@@ -1,0 +1,2 @@
+install:
+- ln -s /usr/share/grub/mocaccino/mos1.png /usr/share/grub/mocaccino-splash.png
