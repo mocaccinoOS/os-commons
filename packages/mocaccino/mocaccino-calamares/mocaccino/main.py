@@ -10,6 +10,16 @@ import re
 
 RE_IS_COMMENT = re.compile("^ *#")
 
+# List of the packages to remove
+# on the installed rootfs at the
+# end of the installation process.
+luet_packages2remove = [
+    "system/mocaccino-calamares",
+    "apps/calamares",
+    "repository/livecd",
+    "mocaccino/live-setup",
+]
+
 
 def is_comment(line):
     """
@@ -21,26 +31,6 @@ def is_comment(line):
 RE_TRAILING_COMMENT = re.compile("#.*$")
 RE_REST_OF_LINE = re.compile("\\s.*$")
 
-
-def extract_locale(line):
-    """
-    Extracts a locale from the @p line, and returns a pair of
-    (extracted-locale, uncommented line). The locale is the
-    first word of the line after uncommenting (in the human-
-    readable text explanation at the top of most /etc/locale.gen
-    files, the locales may be bogus -- either "" or e.g. "Configuration")
-    """
-    # Remove leading spaces and comment signs
-    line = RE_IS_COMMENT.sub("", line)
-    uncommented = line.strip()
-    fields = RE_TRAILING_COMMENT.sub("", uncommented).strip().split()
-    if len(fields) != 2:
-        # Not exactly two fields, can't be a proper locale line
-        return "", uncommented
-    else:
-        # Drop all but first field
-        locale = RE_REST_OF_LINE.sub("", uncommented)
-        return locale, uncommented
 
 def set_grub_background():
     libcalamares.utils.target_env_call(['mkdir', '-p', '/boot/grub/'])
@@ -79,7 +69,7 @@ def setup_locales(install_path):
 
     libcalamares.utils.target_env_call(['locale-gen', '-A'])
     libcalamares.utils.target_env_call([
-        'localect', 'set-locale', locale_conf['LANG']
+        'localectl', 'set-locale', locale_conf['LANG']
     ])
 
     # write /etc/default/locale if /etc/default exists and is a dir
@@ -147,6 +137,14 @@ def run():
     libcalamares.utils.target_env_call([
         'chown', '-R', 'gdm:gdm', '/var/lib/gdm/'
     ])
+    if len(luet_packages2remove) > 0:
+        args = ["luet", "uninstall", "-y"]
+        # args = args + luet_packages2remove
+        # libcalamares.utils.target_env_call(args)
+        # Temporary trying to remove every package singolary
+        for pkg in luet_packages2remove:
+            libcalamares.utils.target_env_call(args + [pkg])
+
     libcalamares.utils.target_env_call(['env-update'])
 
     return None
