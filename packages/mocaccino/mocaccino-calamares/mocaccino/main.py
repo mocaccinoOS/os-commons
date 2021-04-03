@@ -32,13 +32,6 @@ RE_TRAILING_COMMENT = re.compile("#.*$")
 RE_REST_OF_LINE = re.compile("\\s.*$")
 
 
-def set_grub_background():
-    libcalamares.utils.target_env_call(['mkdir', '-p', '/boot/grub/'])
-    libcalamares.utils.target_env_call(
-        ['cp', '-f', '/usr/share/grub/default-splash.png',
-         '/boot/grub/default-splash.png'])
-
-
 def setup_locales(install_path):
     locale_conf = libcalamares.globalstorage.value("localeConf")
 
@@ -129,7 +122,6 @@ def run():
     ])
     # Get install path
     install_path = libcalamares.globalstorage.value('rootMountPoint')
-    set_grub_background()
     setup_locales(install_path)
     setup_audio(install_path)
     configure_services(install_path)
