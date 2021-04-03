@@ -17,6 +17,7 @@ luet_packages2remove = [
     "system/mocaccino-calamares",
     "apps/calamares",
     "app-admin/calamares",
+    "repository/livecd",
 ]
 
 
