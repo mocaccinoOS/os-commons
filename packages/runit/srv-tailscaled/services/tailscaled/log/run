@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -d "/var/log/tailscaled" ]; then
+  mkdir /var/log/tailscaled
+fi
+
+exec svlogd -tt /var/log/tailscaled

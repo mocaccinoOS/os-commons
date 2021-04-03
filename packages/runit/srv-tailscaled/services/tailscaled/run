@@ -1,0 +1,11 @@
+#!/bin/sh
+
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+
+echo 'tailscaled starting.'
+
+LANG=C LC_ALL=C \
+exec /usr/bin/tailscaled --state=/run/tailscaled.state 2>&1

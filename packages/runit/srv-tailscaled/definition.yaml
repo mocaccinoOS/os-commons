@@ -1,0 +1,13 @@
+name: tailscaled
+category: runit-srv
+version: "20210403"
+requires:
+- name: iptables
+  category: networking
+  version: ">=0"
+- name: wireguard-tools
+  category: networking
+  version: ">=0"
+- name: tailscale
+  category: utils
+  version: ">=0"
