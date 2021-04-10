@@ -2,7 +2,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Name=Install Sabayon
+Name=Install MocaccinoOS
 GenericName=System Installer
 TryExec=calamares
 Exec=/usr/bin/installer
