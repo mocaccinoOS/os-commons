@@ -4,32 +4,34 @@ requires:
   version: ">=0"
 package_dir: /{{ .Values.name }}
 env:
-- ENTITY_GROUP=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/group.yaml
-- ENTITY_USER=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/user.yaml
-- ENTITY_GROUPADD=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/group_add.yaml
+- ENTITY_GROUP=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/group/01_group.yaml
+- ENTITY_USER=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/passwd/01_user.yaml
+- ENTITY_GROUPADD=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/passwd/02_group_add.yaml
 
 - LUET_YES=true
 - LUET_NOLOCK=true
 steps:
 - luet install -y utils/yq
 - mkdir -p /{{ .Values.name }}/etc/entities/{{ .Values.name }}
+- mkdir -p /{{ .Values.name }}/etc/entities/{{ .Values.name }}/group
+- mkdir -p /{{ .Values.name }}/etc/entities/{{ .Values.name }}/passwd
 {{- if .Values.group }}
 - touch $ENTITY_GROUP
 - yq w -i $ENTITY_GROUP gid {{.Values.gid}}
 - yq w -i ${ENTITY_GROUP} kind group
-- yq w -i ${ENTITY_GROUP} group_name {{ .Values.name }}
-- yq w -i ${ENTITY_GROUP} users {{ .Values.name }}
+- yq w -i ${ENTITY_GROUP} group_name "{{ .Values.name }}"
+- yq w -i ${ENTITY_GROUP} users "{{ .Values.name }}"
 {{- end }}
 {{- if .Values.groupadd }}
 - touch $ENTITY_GROUPADD
 - yq w -i ${ENTITY_GROUPADD} kind group
-- yq w -i ${ENTITY_GROUPADD} group_name {{ .Values.groupadd }}
-- yq w -i ${ENTITY_GROUPADD} users {{ .Values.name }}
+- yq w -i ${ENTITY_GROUPADD} group_name "{{ .Values.groupadd }}"
+- yq w -i ${ENTITY_GROUPADD} users "{{ .Values.name }}"
 {{- end }}
 - touch $ENTITY_USER
 - yq w -i $ENTITY_USER uid {{.Values.uid}}
 - yq w -i $ENTITY_USER gid {{.Values.gid}}
 - yq w -i ${ENTITY_USER} kind user
-- yq w -i ${ENTITY_USER} username {{ .Values.name }}
+- yq w -i ${ENTITY_USER} username "{{ .Values.name }}"
 - yq w -i ${ENTITY_USER} password x
 - yq w -i $ENTITY_USER shell {{.Values.shell}}

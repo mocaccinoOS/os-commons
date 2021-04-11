@@ -1,0 +1,9 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+package_dir: /package
+steps:
+- mkdir -p /package/usr/bin/
+- cp -rf entity-apply.sh /package/usr/bin/entity-apply
+- chmod +x /package/usr/bin/entity-apply
