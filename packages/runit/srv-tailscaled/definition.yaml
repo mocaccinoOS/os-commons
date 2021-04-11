@@ -1,6 +1,6 @@
 name: tailscaled
 category: runit-srv
-version: "20210403"
+version: "20210411"
 requires:
 - name: iptables
   category: networking

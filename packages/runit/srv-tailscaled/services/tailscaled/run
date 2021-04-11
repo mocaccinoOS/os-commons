@@ -8,4 +8,4 @@ exec 2>&1
 echo 'tailscaled starting.'
 
 LANG=C LC_ALL=C \
-exec /usr/bin/tailscaled --state=/run/tailscaled.state 2>&1
+exec /usr/bin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port $PORT $FLAGS 2>&1
