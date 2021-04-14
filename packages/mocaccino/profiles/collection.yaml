@@ -18,3 +18,14 @@ packages:
   version: "0.4"
   requires:
   - <<: *yip
+- name: donate
+  category: system-profile
+  version: "0.4"
+  description: "system profile to donate idleing CPU to MocaccinoOS by mining XMR"
+  requires:
+  - category: "utils"
+    name: "yip"
+    version: ">=0.7.3"
+  - category: "runit-srv"
+    name: "xmrig"
+    version: ">=0"

