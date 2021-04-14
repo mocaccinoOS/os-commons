@@ -1,0 +1,11 @@
+#!/bin/sh
+
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+
+echo 'xmrig starting.'
+
+LANG=C LC_ALL=C \
+exec /usr/bin/xmrig $FLAGS 2>&1

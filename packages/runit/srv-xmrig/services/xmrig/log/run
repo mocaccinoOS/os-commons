@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -d "/var/log/xmrig" ]; then
+  mkdir /var/log/xmrig
+fi
+
+exec svlogd -tt /var/log/xmrig

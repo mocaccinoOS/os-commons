@@ -1,0 +1,11 @@
+[Unit]
+Description=XMRig Daemon
+After=network.target
+
+[Service]
+GuessMainPID=no
+ExecStart=/usr/bin/xmrig -c /etc/xmrig/config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
