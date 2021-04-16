@@ -20,7 +20,7 @@ stages:
               cores=$(nproc) 
               load=$(awk '{print $3}'< /proc/loadavg)
               usage=$(echo | awk -v c="${cores}" -v l="${load}" '{print l*100/c }')
-              if [[ ${usage} -le 20 ]]; then
+              if [ $(bc <<< "$usage <= 20") -eq 1 ]; then
                   if [ -e "/usr/sbin/runit-start" ]; then
                     runit-start xmrig
                   else 

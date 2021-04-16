@@ -20,7 +20,7 @@ packages:
   - <<: *yip
 - name: donate
   category: system-profile
-  version: "0.5"
+  version: "0.6"
   description: "system profile to donate idleing CPU to MocaccinoOS by mining XMR"
   requires:
   - category: "utils"
