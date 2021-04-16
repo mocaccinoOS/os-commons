@@ -5,4 +5,5 @@ stages:
           # We do ship symlinks, see:
           # https://www.kernel.org/doc/Documentation/filesystems/devpts.txt
           - chmod 666 /dev/pts/ptmx
+          - chmod 1777 /tmp
 name: "system setup"
