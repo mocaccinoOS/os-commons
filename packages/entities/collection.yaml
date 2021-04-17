@@ -100,8 +100,8 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: kube  requires: *requires
--apiserver
+  name: kube-apiserver
+  requires: *requires
   version: "1"
   group: true
   gid: 432
