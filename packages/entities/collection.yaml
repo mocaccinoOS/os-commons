@@ -535,6 +535,16 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: postmaster
+  version: "1"
+  group: true
+  gid: 12
+  uid: 14
+  groupadd: "mail"
+  home: /var/spool/mail
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: amavis
   version: "1"
   group: true
