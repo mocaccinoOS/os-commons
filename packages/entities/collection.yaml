@@ -1381,4 +1381,4 @@ packages:
   uid: 184
   home: /var/lib/pdnsd
   shell: /sbin/nologin
-
+  requires: *requires
