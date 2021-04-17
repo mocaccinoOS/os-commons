@@ -15,7 +15,7 @@ steps:
 - mkdir -p /{{ .Values.name }}/etc/entities/{{ .Values.name }}
 - mkdir -p /{{ .Values.name }}/etc/entities/{{ .Values.name }}/group
 - mkdir -p /{{ .Values.name }}/etc/entities/{{ .Values.name }}/passwd
-{{- if .Values.group }}
+{{- if or .Values.group .Values.onlygroup }}
 - touch $ENTITY_GROUP
 - yq w -i $ENTITY_GROUP gid {{.Values.gid}}
 - yq w -i ${ENTITY_GROUP} kind group

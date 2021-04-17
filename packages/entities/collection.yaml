@@ -2079,7 +2079,7 @@ packages:
   requires: *requires
 - category: entity
   name: video
-  version: "1"
+  version: "2"
   onlygroup: true
   gid: 27
   requires: *requires
