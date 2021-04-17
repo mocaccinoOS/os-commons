@@ -763,11 +763,12 @@ packages:
   requires: *requires
 - category: entity
   name: sddm
-  version: "1"
+  version: "2"
   group: true
   gid: 219
   uid: 219
-  home: /dev/null
+  home: /var/lib/sddm
+  groupadd: "video"
   shell: /sbin/nologin
   requires: *requires
 - category: entity
