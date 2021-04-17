@@ -20,7 +20,9 @@ steps:
 - yq w -i $ENTITY_GROUP gid {{.Values.gid}}
 - yq w -i ${ENTITY_GROUP} kind group
 - yq w -i ${ENTITY_GROUP} group_name "{{ .Values.name }}"
+{{- if not .Values.onlygroup }}
 - yq w -i ${ENTITY_GROUP} users "{{ .Values.name }}"
+{{- end }}
 {{- end }}
 {{- if .Values.groupadd }}
 - touch $ENTITY_GROUPADD
