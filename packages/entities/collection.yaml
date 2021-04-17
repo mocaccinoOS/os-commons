@@ -200,8 +200,8 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: systemd  requires: *requires
--timesync
+  name: systemd-timesync
+  requires: *requires
   version: "1"
   group: true
   gid: 195
@@ -399,8 +399,8 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: systemd  requires: *requires
--coredump
+  name: systemd-coredump
+  requires: *requires
   version: "1"
   group: true
   gid: 194
@@ -607,8 +607,8 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: milter  requires: *requires
--regex
+  name: milter-regex
+  requires: *requires
   version: "1"
   group: true
   gid: 438
@@ -739,8 +739,7 @@ packages:
   group: true
   gid: 490
   uid: 490
-  home: /var/lib/minecraft  requires: *requires
--server
+  home: /var/lib/minecraft-server
   shell: /sbin/nologin
   requires: *requires
 - category: entity
@@ -861,8 +860,7 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: dnscrypt  requires: *requires
--proxy
+  name: dnscrypt-proxy
   version: "1"
   group: true
   gid: 353
@@ -871,15 +869,14 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: systemd  requires: *requires
--network
+  name: systemd-network
+  requires: *requires
   version: "1"
   group: true
   gid: 192
   uid: 192
   home: /dev/null
   shell: /sbin/nologin
-  requires: *requires
 - category: entity
   name: dhcp
   version: "1"
@@ -971,20 +968,16 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: systemd  requires: *requires
--journal  requires: *requires
--remote
+  name: systemd-journal-remote
+  requires: *requires
   version: "1"
   group: true
   gid: 191
   uid: 191
   home: /dev/null
   shell: /sbin/nologin
-  requires: *requires
 - category: entity
-  name: kube  requires: *requires
--controller  requires: *requires
--manager
+  name: kube-controller-manager
   version: "1"
   group: true
   gid: 433
@@ -993,8 +986,7 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: kube  requires: *requires
--scheduler
+  name: kube-scheduler
   version: "1"
   group: true
   gid: 434
@@ -1084,8 +1076,7 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: systemd  requires: *requires
--oom
+  name: systemd-oom
   version: "1"
   group: true
   gid: 198
@@ -1130,8 +1121,7 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: avahi  requires: *requires
--autoipd
+  name: avahi-autoipd
   version: "1"
   group: true
   gid: 62
@@ -1163,8 +1153,7 @@ packages:
   group: true
   gid: 102
   uid: 102
-  home: /var/lib/polkit  requires: *requires
--1
+  home: /var/lib/polkit-1
   shell: /sbin/nologin
   requires: *requires
 - category: entity
@@ -1185,7 +1174,6 @@ packages:
   home: /dev/null
   shell: /sbin/nologin
   requires: *requires
-
 - category: entity
   name: mysql
   version: "1"
@@ -1214,8 +1202,7 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: rstudio  requires: *requires
--server
+  name: rstudio-server
   version: "1"
   group: true
   gid: 466
@@ -1302,8 +1289,7 @@ packages:
   group: true
   gid: 488
   uid: 488
-  home: /opt/teamspeak3  requires: *requires
--server
+  home: /opt/teamspeak3-server
   shell: /sbin/nologin
   requires: *requires
 - category: entity
@@ -1325,8 +1311,7 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  name: systemd  requires: *requires
--resolve
+  name: systemd-resolve
   version: "1"
   group: true
   gid: 193
