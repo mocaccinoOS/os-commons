@@ -536,7 +536,7 @@ packages:
   requires: *requires
 - category: entity
   name: postmaster
-  version: "1"
+  version: "2"
   group: true
   gid: 12
   uid: 14
@@ -1267,7 +1267,7 @@ packages:
   requires: *requires
 - category: entity
   name: gdm
-  version: "2"
+  version: "3"
   group: true
   gid: 32
   uid: 32
@@ -1436,7 +1436,7 @@ packages:
   requires: *requires
 - category: entity
   name: usb
-  version: "1"
+  version: "2"
   onlygroup: true
   gid: 85
   requires: *requires

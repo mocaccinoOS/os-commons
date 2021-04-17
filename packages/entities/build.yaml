@@ -6,7 +6,7 @@ package_dir: /{{ .Values.name }}
 env:
 - ENTITY_GROUP=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/group/01_group.yaml
 - ENTITY_USER=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/passwd/01_user.yaml
-- ENTITY_GROUPADD=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/passwd/02_group_add.yaml
+- ENTITY_GROUPADD=/{{ .Values.name}}/etc/entities/{{ .Values.name }}/group/02_group_add.yaml
 
 - LUET_YES=true
 - LUET_NOLOCK=true
