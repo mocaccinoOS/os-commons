@@ -1,0 +1,7 @@
+name: dockerd
+category: systemd-service
+version: "0.2"
+requires:
+- category: entity
+  name: "docker"
+  version: ">=0"
