@@ -2,30 +2,38 @@ packages:
 
 - name: default-runit
   category: system-profile
-  version: "0.3"
+  version: "0.4"
   requires:
   - &yip
     category: "utils"
     name: "yip"
     version: ">=0.7.3"
+  - &cli
+    category: "mocaccino"
+    name: "cli"
+    version: ">=0"
 - name: default-systemd
   category: system-profile
-  version: "0.6"
+  version: "0.7"
   requires:
   - <<: *yip
+  - <<: *cli
 - name: ssh-systemd
   category: system-profile
-  version: "0.4"
+  version: "0.5"
   requires:
   - <<: *yip
+  - <<: *cli
+- name: check-upgrades
+  category: system-profile
+  version: "0.5"
+  requires:
+  - <<: *yip
+  - <<: *cli
 - name: donate
   category: system-profile
-  version: "0.6"
+  version: "0.7"
   description: "system profile to donate idleing CPU to MocaccinoOS by mining XMR"
   requires:
-  - category: "utils"
-    name: "yip"
-    version: ">=0.7.3"
-  - category: "runit-srv"
-    name: "xmrig"
-    version: ">=0"
+  - <<: *yip
+  - <<: *cli

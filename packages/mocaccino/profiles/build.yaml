@@ -5,5 +5,5 @@ requires:
 
 package_dir: /integration
 steps:
-- mkdir -p /integration/etc/mocaccino/profiles
-- cp -rfv profiles/{{.Values.name}}.yaml /integration/etc/mocaccino/profiles
+- mkdir -p /integration/etc/mocaccino/profiles/available
+- cp -rfv profiles/{{.Values.name}}.yaml /integration/etc/mocaccino/profiles/available

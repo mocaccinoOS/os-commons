@@ -12,6 +12,6 @@ done
 
 [ -e "/etc/yip.yaml" ] && yip -s "$STAGE" /etc/yip.yaml
 [ -d "/etc/yip.d" ] && yip -s "$STAGE" /etc/yip.d
-[ -d "/etc/mocaccino/profiles" ] && yip -s "$STAGE" /etc/mocaccino/profiles
+[ -d "/etc/mocaccino/profiles/active" ] && yip -s "$STAGE" /etc/mocaccino/profiles/active
 
 yip -d -s "$STAGE" /proc/cmdline

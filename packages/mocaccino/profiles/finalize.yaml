@@ -1,0 +1,2 @@
+install:
+- mos profile enable {{.Values.name}}

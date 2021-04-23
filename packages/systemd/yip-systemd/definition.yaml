@@ -1,6 +1,6 @@
 name: yip-systemd
 category: utils
-version: "0.2"
+version: "0.3"
 
 requires:
 - category: "utils"

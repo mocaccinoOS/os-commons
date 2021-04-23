@@ -1,0 +1,18 @@
+env:
+- PATH=$PATH:/usr/local/go/bin
+- GOPATH=/luetbuild/go
+- GO111MODULE=on
+- CGO_ENABLED=1
+
+prelude:
+- apk add git
+- | 
+    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+    git clone https://github.com/mocaccinoOS/mos-cli.git && cd mos-cli && git checkout "${PACKAGE_VERSION}" -b build
+steps:
+- |
+  export PATH=$PATH:$GOPATH/bin && \
+  PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
+  cd mos-cli && DESTDIR=/mos-cli VERSION="${PACKAGE_VERSION}" ./build.sh
+package_dir: "/mos-cli"
+image: "golang:alpine"
