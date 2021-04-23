@@ -37,3 +37,6 @@ packages:
   requires:
   - <<: *yip
   - <<: *cli
+  - category: "cryptocurrency"
+    name: "xmrig"
+    version: ">=0"
