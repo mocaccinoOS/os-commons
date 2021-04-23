@@ -1,2 +1,4 @@
 install:
+{{- if ne .Values.name "donate" }}
 - mos profile enable {{.Values.name}}
+{{- end }}
