@@ -1,0 +1,9 @@
+stages:
+  reconcile:
+       -  name: "run upgrades if available"
+          commands: 
+          - |
+              if [ ! -e "/run/mocaccino/upgrades_available" ]; then
+                  luet upgrade -y
+              fi
+name: "Automatically run upgrades"

@@ -40,3 +40,13 @@ packages:
   - category: "cryptocurrency"
     name: "xmrig"
     version: ">=0"
+- name: auto-upgrades
+  category: system-profile
+  version: "0.1"
+  description: "Automatically upgrades the system when there are available upgrades"
+  requires:
+  - <<: *yip
+  - <<: *cli
+  - category: "system-profile"
+    name: "check-upgrades"
+    version: ">=0"
