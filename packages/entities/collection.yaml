@@ -2095,3 +2095,9 @@ packages:
   onlygroup: true
   gid: 206
   requires: *requires
+- category: entity
+  name: scanner
+  version: "2"
+  onlygroup: true
+  gid: 332
+  requires: *requires
