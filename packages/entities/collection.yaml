@@ -2089,3 +2089,9 @@ packages:
   onlygroup: true
   gid: 388
   requires: *requires
+- category: entity
+  name: realtime
+  version: "2"
+  onlygroup: true
+  gid: 206
+  requires: *requires
