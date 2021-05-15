@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -d "/var/log/edgevpn" ]; then
+  mkdir /var/log/edgevpn
+fi
+
+exec svlogd -tt /var/log/edgevpn

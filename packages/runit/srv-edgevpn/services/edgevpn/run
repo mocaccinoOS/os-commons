@@ -1,0 +1,11 @@
+#!/bin/sh
+
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+
+echo 'edgevpn starting.'
+
+LANG=C LC_ALL=C \
+exec /usr/bin/edgevpn 2>&1
