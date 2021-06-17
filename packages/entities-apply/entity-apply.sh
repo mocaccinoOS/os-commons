@@ -7,7 +7,7 @@ if [ -d "/etc/entities/$entity_name/group/" ]; then
         touch /etc/group
     fi
     for filename in $(ls /etc/entities/$entity_name/group); do
-        entities apply -f /etc/group /etc/entities/$entity_name/group/$filename
+        entities apply -f /etc/group --safe=true /etc/entities/$entity_name/group/$filename
     done
 fi
 
@@ -16,6 +16,6 @@ if [ -d "/etc/entities/$entity_name/passwd/" ]; then
         touch /etc/passwd
     fi
     for filename in $(ls /etc/entities/$entity_name/passwd); do
-        entities apply -f /etc/passwd /etc/entities/$entity_name/passwd/$filename
+        entities apply -f /etc/passwd --safe=true /etc/entities/$entity_name/passwd/$filename
     done
 fi

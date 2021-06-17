@@ -1,6 +1,6 @@
 category: "mocaccino"
 name: "cli"
-version: "0.1.5"
+version: "0.2.0"
 labels:
   github.repo: "mos-cli"
   github.owner: "MocaccinoOS"

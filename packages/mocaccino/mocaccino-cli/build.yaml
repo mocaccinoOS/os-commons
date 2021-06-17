@@ -8,7 +8,7 @@ prelude:
 - apk add git
 - | 
     PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
-    git clone https://github.com/mocaccinoOS/mos-cli.git && cd mos-cli && git checkout "${PACKAGE_VERSION}" -b build
+    git clone https://github.com/mocaccinoOS/mos-cli.git && cd mos-cli && git checkout v"${PACKAGE_VERSION}" -b build
 steps:
 - |
   export PATH=$PATH:$GOPATH/bin && \
