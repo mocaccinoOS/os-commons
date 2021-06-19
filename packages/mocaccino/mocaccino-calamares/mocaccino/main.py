@@ -16,8 +16,8 @@ RE_IS_COMMENT = re.compile("^ *#")
 luet_packages2remove = [
     "system/mocaccino-calamares",
     "apps/calamares",
-    "repository/livecd",
     "mocaccino/live-setup",
+    "repository/livecd",
 ]
 
 
