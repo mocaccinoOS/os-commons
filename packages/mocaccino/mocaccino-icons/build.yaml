@@ -4,5 +4,5 @@ package_dir: /mocaccino-icons
 
 steps:
 - mkdir /mocaccino-icons/usr/share/icons/mOS-icons -p && cp mOS_logo.png /mocaccino-icons/usr/share/icons/mOS-icons
-- cp mOS_outlined.png /mocaccino-icons/usr/share/icons/mOS-icons
-- cp coffeebean.png /mocaccino-icons/usr/share/icons/mOS-icons
+- cp mOS_outlined_hl.png /mocaccino-icons/usr/share/icons/mOS-icons
+- cp mOS_coffee_bean.png /mocaccino-icons/usr/share/icons/mOS-icons
