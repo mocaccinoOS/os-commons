@@ -2107,3 +2107,13 @@ packages:
   onlygroup: true
   gid: 14
   requires: *requires
+- category: entity
+  name: greetd
+  version: "2"
+  group: true
+  gid: 396
+  uid: 396
+  home: /dev/null
+  shell: /sbin/nologin
+  groupadd: "video"
+  requires: *requires
