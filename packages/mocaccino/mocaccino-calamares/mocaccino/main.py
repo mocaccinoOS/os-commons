@@ -14,9 +14,9 @@ RE_IS_COMMENT = re.compile("^ *#")
 # on the installed rootfs at the
 # end of the installation process.
 luet_packages2remove = [
-    "system/mocaccino-calamares",
-    "apps/calamares",
     "mocaccino/live-setup",
+    "system/mocaccino-calamares",
+    "apps/calamares",   
     "repository/livecd",
 ]
 
