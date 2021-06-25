@@ -125,10 +125,7 @@ def run():
     setup_locales(install_path)
     setup_audio(install_path)
     configure_services(install_path)
-    # Temporary workaround until we fix this in luet
-    libcalamares.utils.target_env_call([
-        'chown', '-R', 'gdm:gdm', '/var/lib/gdm/'
-    ])
+
     if len(luet_packages2remove) > 0:
         args = ["luet", "uninstall", "-y"]
         # args = args + luet_packages2remove
