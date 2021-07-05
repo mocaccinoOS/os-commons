@@ -2117,7 +2117,7 @@ packages:
   shell: /sbin/nologin
   groupadd: "video"
   requires: *requires
-  - category: entity
+- category: entity
   name: sgx
   version: "2"
   onlygroup: true
