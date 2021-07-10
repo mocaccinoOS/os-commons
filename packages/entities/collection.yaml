@@ -2123,3 +2123,9 @@ packages:
   onlygroup: true
   gid: 405
   requires: *requires
+- category: entity
+  name: crontab
+  version: "2"
+  onlygroup: true
+  gid: 460
+  requires: *requires
