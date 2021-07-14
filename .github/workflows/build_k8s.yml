@@ -25,7 +25,7 @@ jobs:
       DOCKER_REGISTRY: quay.io
       DOCKER_USER: ${{ secrets.QUAY_USERNAME }}
       DOCKER_PASS: ${{ secrets.QUAY_PASSWORD }}
-      EDGEVPN: ${{ secrets.EDGEVPN }} # uncomment to use fallback
+#      EDGEVPN: ${{ secrets.EDGEVPN }} # uncomment to use fallback
       MASTER: 10.1.0.20
       ADDRESS: "10.1.0.204/24"
     steps:
