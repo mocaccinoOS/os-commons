@@ -1,0 +1,18 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+
+package_dir: /k3s
+prelude:
+- |
+   mkdir -p /${PACKAGE_NAME}/etc/sv && \
+   mkdir -p /${PACKAGE_NAME}/etc/runit/runsvdir && \
+   mkdir -p /${PACKAGE_NAME}/usr/sbin
+
+steps:
+- cp -rfv k3s-killall.sh /${PACKAGE_NAME}/usr/sbin/
+- cp -rfv services/* /${PACKAGE_NAME}/etc/sv/
+- cp -rfv runlevel/* /${PACKAGE_NAME}/etc/runit/runsvdir
+- mkdir -p /${PACKAGE_NAME}/var/log/k3s
