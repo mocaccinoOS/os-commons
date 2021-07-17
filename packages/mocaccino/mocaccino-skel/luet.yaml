@@ -3,7 +3,7 @@ general:
   spinner_charset: 11
   color: true
   enable_emoji: false
-  concurrency: 1
+  concurrency: 3
 system:
   database_path: "/var/luet/db"
   database_engine: "boltdb"
