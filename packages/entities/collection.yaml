@@ -2139,5 +2139,5 @@ packages:
   name: polkituser
   version: "2"
   onlygroup: true
-  gid: -1 
+  gid: "-1" 
   requires: *requires
