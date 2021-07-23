@@ -1,0 +1,8 @@
+category: "system"
+name: "yip-apply"
+version: "0.5"
+description: "helper to run hooks defined in yip format"
+requires:
+  - category: utils
+    name: yip
+    version: ">=0"

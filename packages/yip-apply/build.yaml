@@ -1,0 +1,9 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+package_dir: /package
+steps:
+- mkdir -p /package/usr/bin/
+- cp -rf yip-apply.sh /package/usr/bin/yip-apply
+- chmod +x /package/usr/bin/yip-apply
