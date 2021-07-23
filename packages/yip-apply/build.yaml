@@ -5,5 +5,11 @@ requires:
 package_dir: /package
 steps:
 - mkdir -p /package/usr/bin/
+
 - cp -rf yip-apply.sh /package/usr/bin/yip-apply
 - chmod +x /package/usr/bin/yip-apply
+
+- cp -rf yip-install.sh /package/usr/bin/yip-install
+- chmod +x /package/usr/bin/yip-install
+
+- cp -rfv  /package/usr/bin/* /usr/bin/
