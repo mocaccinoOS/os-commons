@@ -1989,7 +1989,7 @@ packages:
   uid: 351
   home: /var/lib/geoclue
   shell: /sbin/nologin
-requires: *requires
+  requires: *requires
 - category: entity
   name: tape
   version: "2"
