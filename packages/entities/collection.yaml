@@ -1437,7 +1437,7 @@ packages:
   requires: *requires
 - category: entity
   name: usb
-  version: "2"
+  version: "3"
   onlygroup: true
   gid: 85
   requires: *requires
@@ -2097,7 +2097,7 @@ packages:
   requires: *requires
 - category: entity
   name: scanner
-  version: "2"
+  version: "3"
   onlygroup: true
   gid: 332
   requires: *requires
