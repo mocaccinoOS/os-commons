@@ -1983,10 +1983,13 @@ packages:
   requires: *requires
 - category: entity
   name: geoclue
-  version: "2"
-  onlygroup: true
-  gid: 999
-  requires: *requires
+  version: "3"
+  group: true
+  gid: 351
+  uid: 351
+  home: /var/lib/geoclue
+  shell: /sbin/nologin
+requires: *requires
 - category: entity
   name: tape
   version: "2"
