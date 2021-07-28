@@ -1368,9 +1368,9 @@ packages:
   requires: *requires
 - category: entity
   name: man
-  version: "1"
+  version: "2"
   group: true
-  gid: 0
+  gid: 15
   uid: 13
   home: /dev/null
   shell: /sbin/nologin
