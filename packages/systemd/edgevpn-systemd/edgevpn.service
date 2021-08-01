@@ -1,0 +1,10 @@
+[Unit]
+Description=EdgeVPN Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/edgevpn
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

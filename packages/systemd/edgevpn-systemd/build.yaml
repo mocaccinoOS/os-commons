@@ -1,0 +1,10 @@
+requires:
+- category: "development"
+  name: "toolchain"
+  version: ">=0"
+
+package_dir: /integration
+steps:
+- mkdir -p /integration/usr/bin/
+- mkdir -p /integration/lib/systemd/system
+- cp -rfv *.service /integration/lib/systemd/system
