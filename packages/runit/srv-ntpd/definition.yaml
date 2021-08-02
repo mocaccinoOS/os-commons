@@ -1,4 +1,4 @@
 name: ntpd
 category: runit-srv
-version: "20210515"
+version: "20210802"
 
