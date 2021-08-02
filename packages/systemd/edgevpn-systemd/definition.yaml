@@ -1,6 +1,6 @@
 name: edgevpn
 category: systemd-service
-version: "20210515"
+version: "20210802"
 requires:
 - name: edgevpn
   category: utils
