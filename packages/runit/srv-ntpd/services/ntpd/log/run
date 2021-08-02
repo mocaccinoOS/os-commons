@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -d "/var/log/ntpd" ]; then
+  mkdir /var/log/ntpd
+fi
+
+exec svlogd -tt /var/log/ntpd

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+
+echo 'ntpd starting.'
+
+LANG=C LC_ALL=C \
+exec /usr/sbin/ntpd "$NTPD_ARGS" 2>&1
