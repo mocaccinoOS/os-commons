@@ -1,1 +1,1 @@
-NTPD_ARGS=""
+NTPD_ARGS="-n"
