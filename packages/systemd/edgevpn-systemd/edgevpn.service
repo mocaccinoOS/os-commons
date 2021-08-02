@@ -3,6 +3,7 @@ Description=EdgeVPN Daemon
 After=network.target
 
 [Service]
+EnvironmentFile=/etc/systemd/system.conf.d/edgevpn.env
 ExecStart=/usr/bin/edgevpn
 Restart=always
 
