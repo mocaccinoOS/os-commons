@@ -5,8 +5,7 @@ requires:
 
 package_dir: /integration
 steps:
-- mkdir -p /integration/usr/bin/
-- mkdir -p /integration/lib/systemd/system.conf.d/
-- mkdir -p /integration/etc/systemd/systemd
+- mkdir -p /integration/lib/systemd/system/
+- mkdir -p /integration/etc/systemd/system.conf.d/
 - cp -rfv *.service /integration/lib/systemd/system
 - cp -rfv *.env /integration/etc/systemd/system.conf.d/
