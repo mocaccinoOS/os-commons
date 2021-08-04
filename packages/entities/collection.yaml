@@ -2159,3 +2159,12 @@ packages:
   home: /dev/null
   shell: /sbin/nologin
   requires: *requires
+- category: entity
+  name: cron
+  version: "1"
+  group: true
+  gid: 16
+  uid: 16
+  home: /var/spool/cron
+  shell: /sbin/nologin
+  requires: *requires
