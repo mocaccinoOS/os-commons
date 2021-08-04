@@ -2150,3 +2150,12 @@ packages:
   onlygroup: true
   gid: 11
   requires: *requires
+- category: entity
+  name: nm-openconnect
+  version: "1"
+  group: true
+  gid: 142
+  uid: 142
+  home: /dev/null
+  shell: /sbin/nologin
+  requires: *requires
