@@ -2070,13 +2070,11 @@ packages:
   requires: *requires
 - category: entity
   name: alias
-  kind: "user"
-  username: "alias"
-  password: ""
   uid: 200
-  group: "nofiles"
+  group: false
   homedir: "/var/qmail/alias"
   shell: "/sbin/nologin"
+  requires: *requires
 - category: entity
   name: sobexsrv
   version: "2"
