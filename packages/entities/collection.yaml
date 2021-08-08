@@ -2069,6 +2069,7 @@ packages:
   gid: 200
   requires: *requires
 - category: entity
+  name: alias
   kind: "user"
   username: "alias"
   password: ""
