@@ -2069,11 +2069,12 @@ packages:
   gid: 200
   requires: *requires
 - category: entity
-  version: "2"
+  version: "3"
   name: alias
   uid: 200
   group: false
   homedir: "/var/qmail/alias"
+  groupadd: "nofiles"
   shell: "/sbin/nologin"
   requires: *requires
 - category: entity
@@ -2186,9 +2187,10 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  version: "1"
+  version: "2"
   name: nvpd
   uid: 458
   group: false
+  groupadd: "video"
   shell: "/sbin/nologin"
   requires: *requires
