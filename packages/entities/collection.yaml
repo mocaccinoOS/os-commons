@@ -2185,3 +2185,10 @@ packages:
   home: /var/lib/portage/home
   shell: /sbin/nologin
   requires: *requires
+- category: entity
+  version: "1"
+  name: nvpd
+  uid: 458
+  group: false
+  shell: "/sbin/nologin"
+  requires: *requires
