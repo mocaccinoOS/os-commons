@@ -2069,6 +2069,14 @@ packages:
   gid: 200
   requires: *requires
 - category: entity
+  kind: "user"
+  username: "alias"
+  password: ""
+  uid: 200
+  group: "nofiles"
+  homedir: "/var/qmail/alias"
+  shell: "/sbin/nologin"
+- category: entity
   name: sobexsrv
   version: "2"
   onlygroup: true
