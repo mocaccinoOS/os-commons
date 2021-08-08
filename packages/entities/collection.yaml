@@ -2168,3 +2168,12 @@ packages:
   home: /var/spool/cron
   shell: /sbin/nologin
   requires: *requires
+- category: entity
+  name: portage
+  version: "1"
+  group: true
+  gid: 250
+  uid: 250
+  home: /var/lib/portage/home
+  shell: /sbin/nologin
+  requires: *requires
