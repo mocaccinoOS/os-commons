@@ -1724,12 +1724,6 @@ packages:
   gid: 81
   requires: *requires
 - category: entity
-  name: pulse
-  version: "2"
-  onlygroup: true
-  gid: 171
-  requires: *requires
-- category: entity
   name: haproxy
   version: "2"
   onlygroup: true
@@ -2193,4 +2187,14 @@ packages:
   group: false
   groupadd: "video"
   shell: "/sbin/nologin"
+  requires: *requires
+- category: entity
+  name: pulse
+  version: "2"
+  group: true
+  gid: 171
+  uid: 171
+  home: /var/run/pulse
+  groupadd: "audio"
+  shell: /sbin/nologin
   requires: *requires
