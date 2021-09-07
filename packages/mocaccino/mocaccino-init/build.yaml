@@ -11,6 +11,7 @@ prelude:
 - cd minimal && git checkout 9ac67c9b677396e70efbae239e137509f0372e40
 steps:
 - mkdir -p minimal/src/minimal_rootfs/etc/profile.d
+- rm -f minimal/src/minimal_rootfs/etc/motd
 - cp -rfv greeting.sh minimal/src/minimal_rootfs/etc/profile.d/greeting.sh
 - cp -rfv 02_overlay.sh minimal/src/minimal_rootfs/etc/02_overlay.sh
 - mkdir /mocaccino-init
