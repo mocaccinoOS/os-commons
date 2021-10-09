@@ -2198,3 +2198,11 @@ packages:
   groupadd: "audio"
   shell: /sbin/nologin
   requires: *requires
+- category: entity
+  version: "3"
+  name: saned
+  uid: 409
+  group: false
+  groupadd: "scanner"
+  shell: "/sbin/nologin"
+  requires: *requires
