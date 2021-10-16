@@ -10,7 +10,8 @@ prelude:
    mkdir -p /${PACKAGE_NAME}/etc/runit/runsvdir
 
 steps:
-- cp -rfv services/* /${PACKAGE_NAME}/etc/sv/
-#- cp -rfv runlevels/* /${PACKAGE_NAME}/etc/runit/runsvdir
+{{ $links := list "sshd" "udhcpc"}}
+{{ $opts:= dict "sv" "sshd" "links" $links }}
+{{ template "runit_service" $opts }}
 - mkdir -p /${PACKAGE_NAME}/var/log/sshd
 - touch /${PACKAGE_NAME}/var/log/sshd/.keep

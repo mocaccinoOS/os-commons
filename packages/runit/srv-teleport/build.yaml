@@ -11,8 +11,9 @@ prelude:
    mkdir -p /{{.Values.name}}/etc/runit/runsvdir
 
 steps:
-- cp -rfv services/* /{{.Values.name}}/etc/sv/
-#- cp -rfv runlevels/* /{{.Values.name}}/etc/runit/runsvdir
+{{ $links := list "teleport" "udhcpc"}}
+{{ $opts:= dict "sv" "teleport" "links" $links }}
+{{ template "runit_service" $opts }}
 - mkdir -p /{{.Values.name}}/var/log/teleport
 - cp -rfv teleport.yaml /{{.Values.name}}/etc
 - touch /{{.Values.name}}/var/log/teleport/.keep

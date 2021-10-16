@@ -15,8 +15,9 @@ steps:
 - cp -rfv yip-reconcile /integration/usr/bin/
 - chmod +x /integration/usr/bin/yip-reconcile
 
-- cp -rfv services/* /integration/etc/sv/
-#- cp -rfv runlevel/* /${PACKAGE_NAME}/etc/runit/runsvdir
+{{ $links := list "yip" "udhcpc" }}
+{{ $opts:= dict "sv" "yip" "links" $links }}
+{{ template "runit_service" $opts }}
 - mkdir -p /integration/var/log/yip
 
 

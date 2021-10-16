@@ -1,0 +1,22 @@
+{{ define "runit_service" }}
+{{ $sv:= get . "sv" }}
+{{ $links:= get . "links" }}
+
+- cp -rfv services/* /${PACKAGE_NAME}/etc/sv/
+- mkdir -p /${PACKAGE_NAME}/etc/runit/runsvdir/{{$sv}}
+- |
+  cd /${PACKAGE_NAME}/etc/runit/runsvdir/{{$sv}} && \
+  ln -s /etc/sv/agetty-tty1 agetty-tty1 && \
+  ln -s /etc/sv/agetty-tty2 agetty-tty2 && \
+  ln -s /etc/sv/agetty-tty3 agetty-tty3 && \
+  ln -s /etc/sv/agetty-tty4 agetty-tty4 && \
+  ln -s /etc/sv/agetty-tty5 agetty-tty5 && \
+  ln -s /etc/sv/agetty-tty6 agetty-tty6
+{{range $l := $links}}
+- |
+  cd /${PACKAGE_NAME}/etc/runit/runsvdir/{{$sv}} && \
+  ln -s /etc/sv/{{$l}} {{$l}}
+{{end}}
+
+- cd /${PACKAGE_NAME}/etc/sv/{{$sv}} && ln -s /run/runit/supervise.{{$sv}} supervise
+{{end}}

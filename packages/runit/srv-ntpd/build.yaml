@@ -10,19 +10,9 @@ prelude:
    mkdir -p /${PACKAGE_NAME}/etc/runit/runsvdir
 
 steps:
-- cp -rfv services/* /${PACKAGE_NAME}/etc/sv/
-- mkdir -p /${PACKAGE_NAME}/etc/runit/runsvdir/ntpd
-- |
-  cd /${PACKAGE_NAME}/etc/runit/runsvdir/ntpd && \
-  ln -s /etc/sv/agetty-tty1 agetty-tty1 && \
-  ln -s /etc/sv/agetty-tty2 agetty-tty2 && \
-  ln -s /etc/sv/agetty-tty3 agetty-tty3 && \
-  ln -s /etc/sv/agetty-tty4 agetty-tty4 && \
-  ln -s /etc/sv/agetty-tty5 agetty-tty5 && \
-  ln -s /etc/sv/agetty-tty6 agetty-tty6 && \
-  ln -s /etc/sv/ntpd ntpd && \
-  ln -s /etc/sv/udhcpc udhcpc
-- cd /${PACKAGE_NAME}/etc/sv/ntpd && ln -s /run/runit/supervise.ntpd supervise
+{{ $links := list "ntpd" "udhcpc"}}
+{{ $opts:= dict "sv" "ntpd" "links" $links }}
+{{ template "runit_service" $opts }}
 - cp -rfv ntp.conf /${PACKAGE_NAME}/etc/ntp.conf
 - mkdir -p /${PACKAGE_NAME}/var/log/${PACKAGE_NAME}
 - touch /${PACKAGE_NAME}/var/log/${PACKAGE_NAME}/.keep
