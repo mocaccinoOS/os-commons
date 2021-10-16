@@ -49,7 +49,7 @@ jobs:
         sudo chmod -R 777 $PWD/build
     - uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.category }}-${{ matrix.name }}-${{ matrix.version }}.zip
+        name: build
         path: |
           build/
 
@@ -76,12 +76,8 @@ jobs:
 
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@v2
-    - name: Merge artifacts 🔧
+    - name: List artifacts 🔧
       run: |
-        mkdir build || true
-        for i in $(ls | grep zip); do
-          cp -rfv $i/* build
-        done
         ls -liah
         ls -liah build
     - name: Fetch metadata of packages 🔧
