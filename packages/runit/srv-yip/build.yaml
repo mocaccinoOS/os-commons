@@ -3,26 +3,26 @@ requires:
   name: "toolchain"
   version: ">=0"
 
-package_dir: /integration
+package_dir: /{{.Values.name}}
 steps:
-- mkdir -p /integration/usr/bin/
-- mkdir -p /integration/etc/runit/core-services
-- cp -rfv 13-yip.sh /integration/etc/runit/core-services/13-yip.sh
-- chmod +x /integration/etc/runit/core-services/13-yip.sh
-- cp -rfv yip-init /integration/usr/bin/
-- chmod +x /integration/usr/bin/yip-init
+- mkdir -p /${PACKAGE_NAME}/usr/bin/
+- mkdir -p /${PACKAGE_NAME}/etc/runit/core-services
+- cp -rfv 13-yip.sh /${PACKAGE_NAME}/etc/runit/core-services/13-yip.sh
+- chmod +x /${PACKAGE_NAME}/etc/runit/core-services/13-yip.sh
+- cp -rfv yip-init /${PACKAGE_NAME}/usr/bin/
+- chmod +x /${PACKAGE_NAME}/usr/bin/yip-init
 
-- cp -rfv yip-reconcile /integration/usr/bin/
-- chmod +x /integration/usr/bin/yip-reconcile
+- cp -rfv yip-reconcile /${PACKAGE_NAME}/usr/bin/
+- chmod +x /${PACKAGE_NAME}/usr/bin/yip-reconcile
 
 {{ $links := list "yip" "udhcpc" }}
 {{ $opts:= dict "sv" "yip" "links" $links }}
 {{ template "runit_service" $opts }}
-- mkdir -p /integration/var/log/yip
+- mkdir -p /${PACKAGE_NAME}/var/log/yip
 
 
 prelude:
 - |
-   mkdir -p /integration/etc/sv && \
-   mkdir -p /integration/etc/runit/runsvdir
+   mkdir -p /${PACKAGE_NAME}/etc/sv && \
+   mkdir -p /${PACKAGE_NAME}/etc/runit/runsvdir
 
