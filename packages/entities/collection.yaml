@@ -2181,11 +2181,11 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  version: "2"
+  version: "3"
   name: nvpd
+  gid: 27
   uid: 458
-  group: false
-  groupadd: "video"
+  home: /dev/null
   shell: "/sbin/nologin"
   requires: *requires
 - category: entity
