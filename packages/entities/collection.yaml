@@ -2199,11 +2199,10 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
-  version: "4"
+  version: "5"
   name: saned
   uid: 409
   home: /dev/null
-  group: false
   groupadd: "scanner"
   shell: "/sbin/nologin"
   requires: *requires
