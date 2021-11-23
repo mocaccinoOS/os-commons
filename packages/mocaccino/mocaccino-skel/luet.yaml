@@ -10,12 +10,3 @@ system:
   tmpdir_base: "/var/tmp/luet"
 repos_confdir:
   - /etc/luet/repos.conf.d
-repositories:
-- name: "mocaccino-repository-index"
-  description: "MocaccinoOS Repository index"
-  type: "http"
-  enable: true
-  cached: true
-  priority: 1
-  urls:
-  - "https://get.mocaccino.org/mocaccino-repository-index"
