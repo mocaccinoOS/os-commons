@@ -1455,7 +1455,7 @@ packages:
   requires: *requires
 - category: entity
   name: utmp
-  version: "2"
+  version: "3"
   onlygroup: true
   gid: 406
   requires: *requires
