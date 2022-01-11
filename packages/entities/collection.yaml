@@ -536,14 +536,26 @@ packages:
   requires: *requires
 - category: entity
   name: postmaster
-  version: "2"
+  version: "3"
   group: true
   gid: 12
   uid: 14
   groupadd: "mail"
   home: /var/spool/mail
   shell: /sbin/nologin
-  requires: *requires
+  requires:
+  - category: entity
+    name: mail
+    version: ">=0"
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
 - category: entity
   name: amavis
   version: "1"
@@ -763,14 +775,26 @@ packages:
   requires: *requires
 - category: entity
   name: sddm
-  version: "2"
+  version: "3"
   group: true
   gid: 219
   uid: 219
   home: /var/lib/sddm
   groupadd: "video"
   shell: /sbin/nologin
-  requires: *requires
+  requires:
+  - category: entity
+    name: video
+    version: ">=0"
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
 - category: entity
   name: logstash
   version: "1"
@@ -1268,14 +1292,26 @@ packages:
   requires: *requires
 - category: entity
   name: gdm
-  version: "3"
+  version: "4"
   group: true
   gid: 32
   uid: 32
   home: /var/lib/gdm
   shell: /bin/false
   groupadd: "video"
-  requires: *requires
+  requires:
+  - category: entity
+    name: video
+    version: ">=0"
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
 - category: entity
   name: msmtpd
   version: "1"
@@ -2063,14 +2099,26 @@ packages:
   gid: 200
   requires: *requires
 - category: entity
-  version: "3"
+  version: "4"
   name: alias
   uid: 200
   group: false
   homedir: "/var/qmail/alias"
   groupadd: "nofiles"
   shell: "/sbin/nologin"
-  requires: *requires
+  requires:
+  - category: entity
+    name: notfiles
+    version: ">=0"
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
 - category: entity
   name: sobexsrv
   version: "2"
@@ -2115,14 +2163,26 @@ packages:
   requires: *requires
 - category: entity
   name: greetd
-  version: "2"
+  version: "3"
   group: true
   gid: 396
   uid: 396
   home: /dev/null
   shell: /sbin/nologin
   groupadd: "video"
-  requires: *requires
+  requires:
+  - category: entity
+    name: video
+    version: ">=0"
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
 - category: entity
   name: sgx
   version: "2"
@@ -2190,14 +2250,26 @@ packages:
   requires: *requires
 - category: entity
   name: pulse
-  version: "3"
+  version: "4"
   group: true
   gid: 171
   uid: 171
   home: /var/run/pulse
   groupadd: "audio"
   shell: /sbin/nologin
-  requires: *requires
+  requires:
+  - category: entity
+    name: audio
+    version: ">=0"
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
 - category: entity
   version: "6"
   name: saned
