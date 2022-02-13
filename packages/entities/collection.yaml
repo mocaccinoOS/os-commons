@@ -2214,6 +2214,12 @@ packages:
   gid: 11
   requires: *requires
 - category: entity
+  name: seat
+  version: "1"
+  onlygroup: true
+  gid: 202
+  requires: *requires
+- category: entity
   name: nm-openconnect
   version: "1"
   group: true
