@@ -1652,12 +1652,6 @@ packages:
   gid: 315
   requires: *requires
 - category: entity
-  name: greetd
-  version: "2"
-  onlygroup: true
-  gid: 396
-  requires: *requires
-- category: entity
   name: plugdev
   version: "2"
   onlygroup: true
