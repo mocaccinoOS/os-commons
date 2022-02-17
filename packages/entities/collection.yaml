@@ -2241,6 +2241,15 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: radvd
+  version: "1"
+  group: true
+  gid: 215
+  uid: 215
+  home: /dev/null
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   version: "3"
   name: nvpd
   gid: 27
