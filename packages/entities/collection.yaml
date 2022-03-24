@@ -17,7 +17,6 @@ packages:
   - category: "init"
     name: "mocaccino-skel"
     version: ">=0.1"
-
 - category: entity
   name: prometheus
   version: "1"
@@ -2287,3 +2286,47 @@ packages:
   home: /dev/null
   shell: "/sbin/nologin"
   requires: *requires
+- category: entity
+  name: brlapi
+  version: "1"
+  onlygroup: true
+  gid: 507
+  requires: *requires
+- category: entity
+  version: "6"
+  name: brltty
+  gid: 506
+  uid: 506
+  home: /var/lib/brltty
+  shell: "/sbin/nologin"
+  requires:
+  - category: entity
+    name: audio
+    version: ">=0"
+  - category: entity
+    name: brlapi
+    version: ">=0"
+  - category: entity
+    name: dialout
+    version: ">=0"
+  - category: entity
+    name: input
+    version: ">=0"
+  - category: entity
+    name: pulse-access
+    version: ">=0"
+  - category: entity
+    name: root
+    version: ">=0"
+  - category: entity
+    name: tty
+    version: ">=0"    
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
