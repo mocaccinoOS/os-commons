@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -z "$LUET_FINALIZE"  ] ; then 
+if ! pgrep -x luet &> /dev/null 2>&1; then 
     echo -e \
     '\e[2m\n'\
     '        ..\n'\
