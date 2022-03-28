@@ -2330,3 +2330,11 @@ packages:
   - category: "init"
     name: "mocaccino-skel"
     version: ">=0.1"
+- category: entity
+  version: "1"
+  name: root
+  gid: 0
+  uid: 0
+  home: /root
+  shell: "/bin/bash"
+  requires: *requires
