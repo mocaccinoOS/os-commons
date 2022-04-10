@@ -2287,6 +2287,26 @@ packages:
   shell: "/sbin/nologin"
   requires: *requires
 - category: entity
+  version: "6"
+  name: pipewire
+  gid: 509
+  uid: 509
+  home: /var/run/pipewire
+  shell: "/sbin/nologin"
+  requires:
+  - category: entity
+    name: audio
+    version: ">=0"
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
+- category: entity
   name: brlapi
   version: "1"
   onlygroup: true
