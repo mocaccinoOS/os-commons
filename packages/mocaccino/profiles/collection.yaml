@@ -50,3 +50,10 @@ packages:
   - category: "system-profile"
     name: "check-upgrades"
     version: ">=0"
+- name: zram
+  category: system-profile
+  version: "0.1"
+  description: "Automatically setup zram on boot"
+  requires:
+  - <<: *yip
+  - <<: *cli
