@@ -34,7 +34,8 @@ packages:
   uid: 65534
   home: /var/empty
   shell: /sbin/nologin
-  requires: *requires
+  requires:
+  <<: *requires
   - category: entity
     name: root
     version: ">=0"
