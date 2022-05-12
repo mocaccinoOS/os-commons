@@ -27,6 +27,18 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: nobody
+  version: "1"
+  group: true
+  gid: 65534
+  uid: 65534
+  home: /var/empty
+  shell: /sbin/nologin
+  requires: *requires
+  - category: entity
+    name: root
+    version: ">=0"
+- category: entity
   name: placement
   version: "1"
   group: true
@@ -2340,7 +2352,7 @@ packages:
     version: ">=0"
   - category: entity
     name: tty
-    version: ">=0"    
+    version: ">=0"
   - category: "system"
     name: "entities"
     version: ">=0.1"
