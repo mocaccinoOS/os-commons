@@ -2275,6 +2275,7 @@ packages:
   uid: 306
   home: /var/lib/timidity
   shell: "/sbin/nologin"
+  requires:
   - category: entity
     name: nobody
     version: ">=0"
