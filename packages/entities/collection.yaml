@@ -2210,7 +2210,7 @@ packages:
   name: polkituser
   version: "2"
   onlygroup: true
-  gid: 87 
+  gid: 87
   requires: *requires
 - category: entity
   name: floppy
@@ -2268,6 +2268,16 @@ packages:
   home: /dev/null
   shell: "/sbin/nologin"
   requires: *requires
+- category: entity
+  version: "1"
+  name: timidity
+  gid: 65534
+  uid: 306
+  home: /var/lib/timidity
+  shell: "/sbin/nologin"
+  - category: entity
+    name: nobody
+    version: ">=0"
 - category: entity
   name: pulse
   version: "4"
