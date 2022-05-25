@@ -2280,6 +2280,17 @@ packages:
     name: nobody
     version: ">=0"
 - category: entity
+  version: "1"
+  name: sndio
+  gid: 18
+  uid: 461
+  home: /dev/null
+  shell: "/sbin/nologin"
+  requires:
+  - category: entity
+    name: audio
+    version: ">=0"
+- category: entity
   name: pulse
   version: "4"
   group: true
