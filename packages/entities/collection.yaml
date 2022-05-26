@@ -27,6 +27,15 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: libreoffice
+  version: "1"
+  group: true
+  gid: 512
+  uid: 512
+  home: /var/lib/libreoffice
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: nobody
   version: "1"
   group: true
