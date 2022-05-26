@@ -86,3 +86,6 @@ if [ ! -d "/var/tmp" ]; then
 	mkdir -p /var/tmp
 fi
 
+if [ ! -d "/var/db/repos/gentoo" ]; then
+        mkdir -p /var/db/repos/gentoo
+fi
