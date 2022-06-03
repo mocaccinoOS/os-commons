@@ -528,6 +528,15 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: nut
+  version: "1"
+  group: true
+  gid: 84
+  uid: 84
+  home: /var/lib/nut
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: bacula
   version: "1"
   group: true
