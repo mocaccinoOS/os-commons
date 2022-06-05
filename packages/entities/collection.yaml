@@ -1625,6 +1625,12 @@ packages:
   gid: 18
   requires: *requires
 - category: entity
+  name: i2c
+  version: "1"
+  onlygroup: true
+  gid: 226
+  requires: *requires
+- category: entity
   name: netdev
   version: "2"
   onlygroup: true
