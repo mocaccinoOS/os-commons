@@ -1487,6 +1487,12 @@ packages:
   gid: 6
   requires: *requires
 - category: entity
+  name: power
+  version: "1"
+  onlygroup: true
+  gid: 98
+  requires: *requires
+- category: entity
   name: lpadmin
   version: "2"
   onlygroup: true
