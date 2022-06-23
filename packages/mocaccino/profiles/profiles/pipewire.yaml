@@ -1,0 +1,9 @@
+stages:
+  boot:
+       -  name: "pipewire setup"
+          commands:
+          - systemctl --global enable pipewire.socket
+          - systemctl --global enable pipewire.service
+          - systemctl --global enable wireplumber.service
+          - systemctl --global enable pipewire-pulse.service
+name: "pipewire setup"

@@ -57,3 +57,10 @@ packages:
   requires:
   - <<: *yip
   - <<: *cli
+- name: pipewire
+  category: system-profile
+  version: "0.2"
+  description: "Automatically setup pipewire on boot"
+  requires:
+  - <<: *yip
+  - <<: *cli
