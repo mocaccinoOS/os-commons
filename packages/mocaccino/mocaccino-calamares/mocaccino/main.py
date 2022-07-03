@@ -16,7 +16,7 @@ RE_IS_COMMENT = re.compile("^ *#")
 luet_packages2remove = [
     "mocaccino/live-setup",
     "system/mocaccino-calamares",
-    "apps/calamares",   
+    "apps/calamares",
     "repository/livecd",
 ]
 
@@ -134,6 +134,8 @@ def run():
         for pkg in luet_packages2remove:
             libcalamares.utils.target_env_call(args + [pkg])
 
+    # The Calamares desktop icon gets installed in /etc/skel
+    # No need to have that on the target system
+    libcalamares.utils.target_env_call(['rm', '-rf', '/etc/skel/Desktop/Installer.desktop'])
     libcalamares.utils.target_env_call(['env-update'])
-
     return None
