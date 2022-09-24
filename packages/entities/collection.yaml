@@ -239,6 +239,15 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: nm-openvpn
+  version: "1"
+  group: true
+  gid: 143
+  uid: 143
+  home: /dev/null
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: gkrellmd
   version: "1"
   group: true
