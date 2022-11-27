@@ -2376,6 +2376,30 @@ packages:
   shell: "/sbin/nologin"
   requires: *requires
 - category: entity
+  version: "1"
+  name: usbmux
+  uid: 418
+  home: /dev/null
+  groupadd: "usb"
+  groupadd: "plugdev"
+  shell: "/sbin/nologin"
+  requires:
+  - category: entity
+    name: usb
+    version: ">=0"
+  - category: entity
+    name: plugdev
+    version: ">=0"
+  - category: "system"
+    name: "entities"
+    version: ">=0.1"
+  - category: "system"
+    name: "entity-apply"
+    version: ">=0.1"
+  - category: "init"
+    name: "mocaccino-skel"
+    version: ">=0.1"
+- category: entity
   version: "6"
   name: pipewire
   gid: 509
