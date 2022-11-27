@@ -2382,7 +2382,7 @@ packages:
   uid: 418
   home: /dev/null
   groupadd: "usb"
-  groupadd: "plugdev"
+  # groupadd: "plugdev"
   shell: "/sbin/nologin"
   requires:
   - category: entity
