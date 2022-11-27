@@ -2378,8 +2378,8 @@ packages:
 - category: entity
   version: "1"
   name: usbmux
-  group: false
   uid: 418
+  group: false
   home: /dev/null
   groupadd: "usb"
   # groupadd: "plugdev"
