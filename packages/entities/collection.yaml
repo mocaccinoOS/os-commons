@@ -1199,9 +1199,9 @@ packages:
   requires: *requires
 - category: entity
   name: transmission
-  version: "1"
+  version: "2"
   group: true
-  gid: 0
+  gid: 169
   uid: 169
   home: /dev/null
   shell: /sbin/nologin
