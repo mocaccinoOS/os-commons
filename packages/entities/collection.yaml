@@ -515,12 +515,13 @@ packages:
   requires: *requires
 - category: entity
   name: qemu
-  version: "1"
+  version: "2"
   group: true
   gid: 77
   uid: 77
   home: /dev/null
   shell: /sbin/nologin
+  groupadd: "kvm"
   requires: *requires
 - category: entity
   name: pdns
@@ -2379,10 +2380,10 @@ packages:
   version: "1"
   name: usbmux
   uid: 418
-  group: false
+  # part of usb group
+  gid: 85
   home: /dev/null
-  groupadd: "usb"
-  # groupadd: "plugdev"
+  groupadd: "plugdev"
   shell: "/sbin/nologin"
   requires:
   - category: entity
