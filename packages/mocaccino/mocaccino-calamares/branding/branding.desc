@@ -10,8 +10,8 @@ strings:
     shortVersionedName:  Mocaccino 
     bootloaderEntryName: Mocaccino Linux 
     productUrl:          http://www.mocaccino.org/
-    supportUrl:          https://community.mocaccino.org/
-    knownIssuesUrl:      https://wiki.sabayon.org/index.php?title=En:FAQ
+    supportUrl:          https://github.com/mocaccinoOS/mocaccino/discussions
+    knownIssuesUrl:      https://github.com/mocaccinoOS/mocaccino/issues
     releaseNotesUrl:     http://www.mocaccino.org
 
 images:
