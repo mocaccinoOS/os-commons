@@ -2031,6 +2031,12 @@ packages:
   gid: 172
   requires: *requires
 - category: entity
+  name: android
+  version: "1"
+  onlygroup: true
+  gid: 174
+  requires: *requires
+- category: entity
   name: buildbot
   version: "2"
   onlygroup: true
