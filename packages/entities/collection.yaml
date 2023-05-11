@@ -2032,7 +2032,7 @@ packages:
   requires: *requires
 - category: entity
   name: android
-  version: "1"
+  version: "2"
   onlygroup: true
   gid: 174
   requires: *requires
