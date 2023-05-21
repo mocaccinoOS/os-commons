@@ -1,15 +1,14 @@
-componentName:  mocaccinoos
-
-windowPlacement: center
+---
+componentName:  default
 
 strings:
     productName:         MocaccinoOS
     shortProductName:    Mocaccino
     version:             ""
     shortVersion:        ""
-    versionedName:       Mocaccino Linux
-    shortVersionedName:  Mocaccino
-    bootloaderEntryName: Mocaccino Linux
+    versionedName:       Mocaccino Linux 
+    shortVersionedName:  Mocaccino 
+    bootloaderEntryName: Mocaccino Linux 
     productUrl:          http://www.mocaccino.org/
     supportUrl:          https://github.com/mocaccinoOS/mocaccino/discussions
     knownIssuesUrl:      https://github.com/mocaccinoOS/mocaccino/issues
