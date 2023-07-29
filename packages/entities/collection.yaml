@@ -2281,12 +2281,6 @@ packages:
   gid: 100
   requires: *requires
 - category: entity
-  name: polkituser
-  version: "2"
-  onlygroup: true
-  gid: 87
-  requires: *requires
-- category: entity
   name: floppy
   version: "1"
   onlygroup: true
