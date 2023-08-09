@@ -1534,9 +1534,11 @@ packages:
   requires: *requires
 - category: entity
   name: ldap
-  version: "2"
-  onlygroup: true
-  gid: 438
+  version: "3"
+  gid: 439
+  uid: 439
+  home: /usr/lib64/openldap/
+  shell: "/sbin/nologin"
   requires: *requires
 - category: entity
   name: cgit
