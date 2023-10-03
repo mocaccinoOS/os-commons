@@ -657,6 +657,15 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: vdr
+  version: "1"
+  group: true
+  gid: 452
+  uid: 452
+  home: /var/lib/vdr
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: vdradmin
   version: "1"
   group: true
