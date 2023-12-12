@@ -693,6 +693,15 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: qbittorrent
+  version: "1"
+  group: true
+  gid: 534
+  uid: 534
+  home: /var/lib/qbittorrent
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: mythtv
   version: "1"
   group: true
