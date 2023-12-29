@@ -693,6 +693,15 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: minidlna
+  version: "3"
+  group: true
+  gid: 339
+  uid: 339
+  home: /dev/null
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: qbittorrent
   version: "1"
   group: true
@@ -1935,12 +1944,6 @@ packages:
   version: "2"
   onlygroup: true
   gid: 99
-  requires: *requires
-- category: entity
-  name: minidlna
-  version: "2"
-  onlygroup: true
-  gid: 339
   requires: *requires
 - category: entity
   name: upmpcli
