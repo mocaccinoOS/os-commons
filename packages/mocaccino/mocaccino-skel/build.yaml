@@ -3,10 +3,10 @@ image: "quay.io/mocaccino/extra:latest"
 package_dir: /mocaccino-skel
 prelude:
 - |
-   mkdir -p /${PACKAGE_NAME}/usr/sbin
+   mkdir -p /${PACKAGE_NAME}/usr/bin
 steps:
-- cp -rfv mocaccino-init-skel.sh /${PACKAGE_NAME}/usr/sbin/mocaccino-init-skel
-- chmod +x /${PACKAGE_NAME}/usr/sbin/mocaccino-init-skel
+- cp -rfv mocaccino-init-skel.sh /${PACKAGE_NAME}/usr/bin/mocaccino-init-skel
+- chmod +x /${PACKAGE_NAME}/usr/bin/mocaccino-init-skel
 - mkdir -p /${PACKAGE_NAME}/etc/skel.defaults/entities
 - cp -rfv entities/* /${PACKAGE_NAME}/etc/skel.defaults/entities
 - cp -rfv rootfs/* /${PACKAGE_NAME}/etc/skel.defaults/

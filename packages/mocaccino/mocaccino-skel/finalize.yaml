@@ -1,2 +1,2 @@
 install:
-- /usr/sbin/mocaccino-init-skel
+- /usr/bin/mocaccino-init-skel
