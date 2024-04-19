@@ -1,0 +1,76 @@
+[Aliases]
+AliasList=media /exec media,audio /exec media audio,video /exec media video,cmd /exec cmd,gauge /exec gauge,uptime /exec uptime,fortune /exec fortune,bug /exec bug,mail /exec mail,sayclip /exec sayclip,tinyurl /exec tinyurl,sysinfo /exec sysinfo
+
+[Appearance]
+ChannelSplitterSizes=1618,156
+TopicSplitterSizes=28,940
+TreeSplitterSizes=145,494
+
+[Channel 0]
+EnableNotifications=true
+Name=#mocaccinoos
+Password=
+
+[Channel 2]
+Name[$d]
+
+[Channel 3]
+Name[$d]
+
+[DCC Settings]
+ColumnWidths=49,90,103,173,70,87,157,87,96,165
+PanelSplitter=AAAA/wAAAAEAAAACAAAAVAAAAPMB/////wEAAAACAA==
+
+[Identity 0]
+AuthType=nickserv
+AutomaticAway=false
+AutomaticUnaway=false
+AwayInactivity=10
+AwayMessage=
+AwayNick=
+AwayReason=Gone away for now
+Bot=nickserv
+Codec=UTF-8
+Ident=Mocaccino
+InsertRememberLineOnAway=false
+KickReason=User terminated!
+Name=Default Identity
+Nicknames=mocaccinouser,mocaccinouser_,mocaccinouser__
+NickservCommand=identify
+PartReason=Konversation terminated!
+Password=
+PemClientCertFile=
+PreShellCommand=
+QuitReason=Konversation terminated!
+Realname=sabayonuser
+ReturnMessage=
+SaslAccount=
+ShowAwayMessage=false
+
+[MainWindow]
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Window-Maximized 1080x1920=true
+
+[Server 0]
+BypassProxy=false
+Password=
+Port=8001
+SSLEnabled=false
+Server=irc.libera.chat
+
+[ServerGroup 0]
+AutoConnect=false
+AutoJoinChannels=Channel 0
+ChannelHistory=Channel 1
+ConnectCommands=
+EnableNotifications=true
+Expanded=false
+Identity=Default Identity
+Name=Libera
+NotifyList=
+ServerList=Server 0
+
+[ServerListDialog]
+ServerListHeaderState=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01Ù\x00\x00\x00\x03\x00\x01\x00\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00»ˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00»\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00»\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03Ë\x01\x00\x00\x00»
+Size=533,274
