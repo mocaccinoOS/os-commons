@@ -9,10 +9,11 @@ strings:
     versionedName:       Mocaccino Linux 
     shortVersionedName:  Mocaccino 
     bootloaderEntryName: Mocaccino Linux 
-    productUrl:          http://www.mocaccino.org/
+    productUrl:          https://www.mocaccino.org/
     supportUrl:          https://github.com/mocaccinoOS/mocaccino/discussions
     knownIssuesUrl:      https://github.com/mocaccinoOS/mocaccino/issues
-    releaseNotesUrl:     http://www.mocaccino.org
+    releaseNotesUrl:     https://github.com/mocaccinoOS/mocaccino/releases
+    donateUrl:           https://www.mocaccino.org/docs/donate
 
 images:
     productLogo:         "mocaccino_logo.png"
