@@ -1,2 +1,2 @@
 #!/bin/sh
-calamares-pkexec
+pkexec "/usr/bin/calamares" "$@"
