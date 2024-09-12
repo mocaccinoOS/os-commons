@@ -15,7 +15,7 @@ jobs:
       ALL_PACKAGES: "true"
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Release space from worker
       run: |
         sudo rm -rf /usr/local/lib/android # will release about 10 GB if you don't need Android
@@ -31,7 +31,7 @@ jobs:
       run: |
         curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
           go-version: '^1.16'
     - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
@@ -47,7 +47,7 @@ jobs:
         sudo -E ./.github/build
         ls -liah $PWD/build
         sudo chmod -R 777 $PWD/build
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: build
         path: |
@@ -59,13 +59,13 @@ jobs:
       FINAL_REPO: quay.io/mocaccino/os-commons
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - run: |
         git fetch --prune --unshallow
     - name: Login to Quay Registry
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       run: echo ${{ secrets.QUAY_ROBOT_PASSWORD }} | docker login -u ${{ secrets.QUAY_ROBOT_USERNAME }} --password-stdin quay.io
-  
+
     - name: Install deps 🔧
       run: |
         curl https://get.mocaccino.org/luet/get_luet_root.sh | sudo sh
@@ -75,7 +75,7 @@ jobs:
           go-version: '^1.16'
 
     - name: Download all workflow run artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
     - name: List artifacts 🔧
       run: |
         ls -liah
