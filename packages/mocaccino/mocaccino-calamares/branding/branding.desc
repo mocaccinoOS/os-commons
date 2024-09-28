@@ -6,9 +6,9 @@ strings:
     shortProductName:    Mocaccino
     version:             ""
     shortVersion:        ""
-    versionedName:       Mocaccino Linux 
-    shortVersionedName:  Mocaccino 
-    bootloaderEntryName: Mocaccino Linux 
+    versionedName:       Mocaccino Linux
+    shortVersionedName:  Mocaccino
+    bootloaderEntryName: Mocaccino Linux
     productUrl:          https://www.mocaccino.org/
     supportUrl:          https://github.com/mocaccinoOS/mocaccino/discussions
     knownIssuesUrl:      https://github.com/mocaccinoOS/mocaccino/issues
@@ -18,11 +18,12 @@ strings:
 images:
     productLogo:         "mocaccino_logo.png"
     productIcon:         "mocaccino_logo.png"
+    productWelcome:      "welcome.png"
 
 slideshow:               "show.qml"
 
 style:
-   sidebarBackground:    "#2A2C31"
-   sidebarText:          "#FFFFFF"
-   sidebarTextSelect:    "#292F34"
-   sidebarTextHighlight: "#CC9B7B"
+   SidebarBackground:        "#292F34"
+   SidebarText:              "#FFFFFF"
+   SidebarTextCurrent:       "#292F34"
+   SidebarBackgroundCurrent: "#cb9b7a"
