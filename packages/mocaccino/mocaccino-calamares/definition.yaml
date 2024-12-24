@@ -1,6 +1,6 @@
 category: "system"
 name: "mocaccino-calamares"
-version: "0.20240928"
+version: "0.20241224"
 requires:
 - category: "apps"
   name: "calamares"
