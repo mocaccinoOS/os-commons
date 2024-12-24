@@ -24,15 +24,13 @@ steps:
 - rm -rfv /boot/uefi/loader/entries/mll-x86.conf
 - rm -rfv /loader/entries/mll-x86.conf
 # Append cdroot to boot options to trigger MocaccinoOS-live startup scripts
-- sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7/g' /boot/uefi/loader/entries/mll-x86_64.conf
-- sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7/g' /loader/entries/mll-x86_64.conf
-- sed -i 's/APPEND/APPEND cdroot rootdelay=7/g' /boot/bios/boot/syslinux/syslinux.cfg
-- sed -i 's/APPEND/APPEND cdroot rootdelay=7/g' /boot/syslinux/syslinux.cfg
-
+- sed -i 's/rootfs.xz/rootfs.xz cdroot SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 rootdelay=7/g' /boot/uefi/loader/entries/mll-x86_64.conf
+- sed -i 's/rootfs.xz/rootfs.xz cdroot SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 rootdelay=7/g' /loader/entries/mll-x86_64.conf
+- sed -i 's/APPEND/APPEND cdroot SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 rootdelay=7/g' /boot/bios/boot/syslinux/syslinux.cfg
+- sed -i 's/APPEND/APPEND cdroot SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1 rootdelay=7/g' /boot/syslinux/syslinux.cfg
 
 includes:
 - /boot$|/boot/.*
 # Needed ISOIMAGE
 - /EFI$|/EFI/.*
 - /loader$|/loader/.*
-
