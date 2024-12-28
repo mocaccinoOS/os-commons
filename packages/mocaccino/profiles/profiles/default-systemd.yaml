@@ -7,7 +7,8 @@ stages:
           - chmod 666 /dev/pts/ptmx
           - chmod 1777 /tmp
           - chmod 1777 /var/tmp/
+          # 2024-12-28: Joost Ruis disable cgroups v1
           # Docker and alikes
-          - mkdir /sys/fs/cgroup/systemd
-          - mount -t cgroup -o none,rw,nosuid,nodev,noexec,relatime,xattr,name=systemd cgroup /sys/fs/cgroup/systemd
+          # - mkdir /sys/fs/cgroup/systemd
+          # - mount -t cgroup -o none,rw,nosuid,nodev,noexec,relatime,xattr,name=systemd cgroup /sys/fs/cgroup/systemd
 name: "system setup"
