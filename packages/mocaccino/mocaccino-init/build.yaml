@@ -13,7 +13,6 @@ steps:
 - mkdir -p minimal/src/minimal_rootfs/etc/profile.d
 - rm -f minimal/src/minimal_rootfs/etc/motd
 - cp -rfv greeting.sh minimal/src/minimal_rootfs/etc/profile.d/greeting.sh
-- cp -rfv 01_prepare.sh minimal/src/minimal_rootfs/etc/01_prepare.sh
 - cp -rfv 02_overlay.sh minimal/src/minimal_rootfs/etc/02_overlay.sh
 - mkdir /mocaccino-init
 - cp -rfv minimal/src/minimal_rootfs/etc /mocaccino-init
