@@ -1,7 +1,7 @@
 stages:
   boot:
        -  name: "system setup"
-          commands: 
+          commands:
           # We do ship symlinks, see:
           # https://www.kernel.org/doc/Documentation/filesystems/devpts.txt
           - chmod 666 /dev/pts/ptmx
@@ -11,4 +11,10 @@ stages:
           # Docker and alikes
           # - mkdir /sys/fs/cgroup/systemd
           # - mount -t cgroup -o none,rw,nosuid,nodev,noexec,relatime,xattr,name=systemd cgroup /sys/fs/cgroup/systemd
+
+          # Disable cgroups v1 if present
+          - echo "Disabling cgroups v1 if present..."; for subsystem in $(ls /sys/fs/cgroup); do umount /sys/fs/cgroup/$subsystem || true; done
+
+          # Enable cgroups v2
+          - [ ! -d /sys/fs/cgroup ] && mkdir -p /sys/fs/cgroup; echo "Mounting cgroups v2..."; mount -t cgroup2 none /sys/fs/cgroup
 name: "system setup"
