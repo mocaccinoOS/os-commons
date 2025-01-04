@@ -34,19 +34,6 @@ mkdir /mnt/proc
 mkdir /mnt/tmp
 echo "Created folders for all critical file systems."
 
-# Enable cgroups v2
-if [ ! -d /sys/fs/cgroup ]; then
-    mkdir -p /sys/fs/cgroup
-fi
-echo "Mounting cgroups v2..."
-mount -t cgroup2 none /sys/fs/cgroup
-
-# Ensure legacy cgroups (v1) are unmounted if present
-for subsystem in $(ls /sys/fs/cgroup 2>/dev/null); do
-    umount /sys/fs/cgroup/$subsystem || true
-done
-echo "Cgroups v2 setup complete."
-
 # Copy root folders in the new mountpoint.
 # echo -e "Copying the root file system to \\e[94m/mnt\\e[0m."
 # for dir in */ ; do
