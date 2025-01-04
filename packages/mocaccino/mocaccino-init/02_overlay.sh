@@ -309,6 +309,19 @@ mount --move /proc /mnt/proc
 mount --move /tmp /mnt/tmp
 echo -e "Mount locations \\e[94m/dev\\e[0m, \\e[94m/sys\\e[0m, \\e[94m/tmp\\e[0m and \\e[94m/proc\\e[0m have been moved to \\e[94m/mnt\\e[0m."
 
+# Enable cgroups v2
+if [ ! -d /mnt/sys/fs/cgroup ]; then
+    mkdir -p /mnt/sys/fs/cgroup
+fi
+echo "Mounting cgroups v2..."
+mount -t cgroup2 none /mnt/sys/fs/cgroup
+
+# Ensure legacy cgroups (v1) are unmounted if present
+for subsystem in $(ls /mnt/sys/fs/cgroup 2>/dev/null); do
+    umount /mnt/sys/fs/cgroup/$subsystem || true
+done
+echo "Cgroups v2 setup complete."
+
 # The new mountpoint becomes file system root. All original root folders are
 # deleted automatically as part of the command execution. The '/sbin/init'
 # process is invoked and it becomes the new PID 1 parent process.
