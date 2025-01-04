@@ -34,6 +34,19 @@ mkdir /mnt/proc
 mkdir /mnt/tmp
 echo "Created folders for all critical file systems."
 
+# Enable cgroups v2
+if [ ! -d /sys/fs/cgroup ]; then
+    mkdir -p /sys/fs/cgroup
+fi
+echo "Mounting cgroups v2..."
+mount -t cgroup2 none /sys/fs/cgroup
+
+# Ensure legacy cgroups (v1) are unmounted if present
+for subsystem in $(ls /sys/fs/cgroup 2>/dev/null); do
+    umount /sys/fs/cgroup/$subsystem || true
+done
+echo "Cgroups v2 setup complete."
+
 # Copy root folders in the new mountpoint.
 # echo -e "Copying the root file system to \\e[94m/mnt\\e[0m."
 # for dir in */ ; do
@@ -308,19 +321,6 @@ mount --move /sys /mnt/sys
 mount --move /proc /mnt/proc
 mount --move /tmp /mnt/tmp
 echo -e "Mount locations \\e[94m/dev\\e[0m, \\e[94m/sys\\e[0m, \\e[94m/tmp\\e[0m and \\e[94m/proc\\e[0m have been moved to \\e[94m/mnt\\e[0m."
-
-# Enable cgroups v2
-if [ ! -d /mnt/sys/fs/cgroup ]; then
-    mkdir -p /mnt/sys/fs/cgroup
-fi
-echo "Mounting cgroups v2..."
-mount -t cgroup2 none /mnt/sys/fs/cgroup
-
-# Ensure legacy cgroups (v1) are unmounted if present
-for subsystem in $(ls /mnt/sys/fs/cgroup 2>/dev/null); do
-    umount /mnt/sys/fs/cgroup/$subsystem || true
-done
-echo "Cgroups v2 setup complete."
 
 # The new mountpoint becomes file system root. All original root folders are
 # deleted automatically as part of the command execution. The '/sbin/init'
