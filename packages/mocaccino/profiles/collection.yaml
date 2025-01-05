@@ -14,7 +14,7 @@ packages:
     version: ">=0"
 - name: default-systemd
   category: system-profile
-  version: "0.9.2"
+  version: "0.9.3"
   requires:
   - <<: *yip
   - <<: *cli

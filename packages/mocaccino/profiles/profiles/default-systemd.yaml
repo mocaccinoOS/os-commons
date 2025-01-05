@@ -16,5 +16,5 @@ stages:
           - echo "Disabling cgroups v1 if present..."; for subsystem in $(ls /sys/fs/cgroup); do umount /sys/fs/cgroup/$subsystem || true; done
 
           # Enable cgroups v2
-          - if [ ! -d /sys/fs/cgroup ]; then mkdir -p /sys/fs/cgroup; fi; echo "Mounting cgroups v2..."; mount -t cgroup2 none /sys/fs/cgroup
+          # - if [ ! -d /sys/fs/cgroup ]; then mkdir -p /sys/fs/cgroup; fi; echo "Mounting cgroups v2..."; mount -t cgroup2 none /sys/fs/cgroup
 name: "system setup"
