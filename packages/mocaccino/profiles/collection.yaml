@@ -66,7 +66,7 @@ packages:
   - <<: *cli
 - name: flathub
   category: system-profile
-  version: "0.2"
+  version: "0.1"
   description: "Add Flathub repo if Flatpak is installed"
   requires:
   - <<: *yip

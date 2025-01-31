@@ -1,5 +1,5 @@
 stages:
-  boot:
+  reconcile:
        -  name: "enable flathub if needed"
           commands:
           - |
