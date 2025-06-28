@@ -1,0 +1,2 @@
+install:
+- mkdir /usr/share/pixmaps -p && ln -s /usr/share/icons/mOS-icons/mOS_outlined_hl.png /usr/share/pixmaps/mocaccino.png
