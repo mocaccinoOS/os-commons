@@ -1,6 +1,5 @@
 NAME="MocaccinoOS"
 ID=mocaccinoos
-VERSION_ID="rolling"
 PRETTY_NAME="MocaccinoOS"
 ANSI_COLOR="1;32"
 CPE_NAME="cpe:/o:mocaccino:mocaccinoos:rolling"
