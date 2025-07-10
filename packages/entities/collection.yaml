@@ -702,6 +702,15 @@ packages:
   shell: /sbin/nologin
   requires: *requires
 - category: entity
+  name: lxc
+  version: "1"
+  group: true
+  gid: 358
+  uid: 358
+  home: /dev/null
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: qbittorrent
   version: "1"
   group: true
