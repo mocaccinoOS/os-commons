@@ -122,7 +122,8 @@ def run():
     ])
     # Get install path
     install_path = libcalamares.globalstorage.value('rootMountPoint')
-    setup_locales(install_path)
+    # Disable this. Might be some old workaround? It does more harm then good it seems.
+    # setup_locales(install_path)
     setup_audio(install_path)
     configure_services(install_path)
 
