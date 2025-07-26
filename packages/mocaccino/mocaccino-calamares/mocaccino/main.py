@@ -72,6 +72,35 @@ def setup_locales(install_path):
                 edl.write("{!s}={!s}\n".format(k, v))
         libcalamares.utils.debug('{!s} done'.format(target_etc_default_path))
 
+def setup_locales_test(install_path):
+    locale_conf = libcalamares.globalstorage.value("localeConf")
+    if not locale_conf:
+        locale_conf = { 'LANG': 'en_US.UTF-8' }
+
+    lang = locale_conf.get('LANG', 'en_US.UTF-8')
+
+    # 1. Write /etc/locale.conf
+    locale_conf_path = os.path.join(install_path, "etc/locale.conf")
+    with open(locale_conf_path, "w") as f:
+        f.write(f"LANG={lang}\n")
+
+    # 2. Uncomment in /etc/locale.gen
+    locale_gen_path = os.path.join(install_path, "etc/locale.gen")
+    if os.path.exists(locale_gen_path):
+        with open(locale_gen_path, "r") as f:
+            lines = f.readlines()
+        with open(locale_gen_path, "w") as f:
+            for line in lines:
+                if lang in line and line.strip().startswith("#"):
+                    f.write(line.lstrip("# "))
+                else:
+                    f.write(line)
+
+    # 3. Run locale-gen inside chroot
+    libcalamares.utils.target_env_call(["locale-gen"])
+
+    # 4. Apply with localectl (optional but helpful)
+    libcalamares.utils.target_env_call(["localectl", "set-locale", f"LANG={lang}"])
 
 def setup_audio(root_install_path):
     asound_state_filename = 'asound.state'
@@ -122,8 +151,8 @@ def run():
     ])
     # Get install path
     install_path = libcalamares.globalstorage.value('rootMountPoint')
-    # Disable this. Might be some old workaround? It does more harm then good it seems.
-    # setup_locales(install_path)
+    # Test new version
+    setup_locales_test(install_path)
     setup_audio(install_path)
     configure_services(install_path)
 
