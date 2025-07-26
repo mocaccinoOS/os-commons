@@ -34,46 +34,6 @@ RE_REST_OF_LINE = re.compile("\\s.*$")
 
 def setup_locales(install_path):
     locale_conf = libcalamares.globalstorage.value("localeConf")
-
-    if not locale_conf:
-        locale_conf = {
-            'LANG': 'en_US.utf-8',
-            'LC_NUMERIC': 'en_US.utf-8',
-            'LC_TIME': 'en_US.utf-8',
-            'LC_MONETARY': 'en_US.utf-8',
-            'LC_PAPER': 'en_US.utf-8',
-            'LC_NAME': 'en_US.utf-8',
-            'LC_ADDRESS': 'en_US.utf-8',
-            'LC_TELEPHONE': 'en_US.utf-8',
-            'LC_MEASUREMENT': 'en_US.utf-8',
-            'LC_IDENTIFICATION': 'en_US.utf-8'
-        }
-
-    target_locale_gen = "{!s}/etc/locale.gen".format(install_path)
-    target_locale_gen_bak = target_locale_gen + ".bak"
-    target_etc_default_path = "{!s}/etc/env.d/02locale".format(install_path)
-
-    # restore backup if available
-    if os.path.exists(target_locale_gen_bak):
-        shutil.copy2(target_locale_gen_bak, target_locale_gen)
-        libcalamares.utils.debug(
-                "Restored backup {!s} -> {!s}"
-                .format(target_locale_gen_bak, target_locale_gen))
-
-    libcalamares.utils.target_env_call(['locale-gen', '-A'])
-    libcalamares.utils.target_env_call([
-        'localectl', 'set-locale', locale_conf['LANG']
-    ])
-
-    # write /etc/default/locale if /etc/default exists and is a dir
-    if os.path.isdir(target_etc_default_path):
-        with open(os.path.join(target_etc_default_path, "locale"), "w") as edl:
-            for k, v in locale_conf.items():
-                edl.write("{!s}={!s}\n".format(k, v))
-        libcalamares.utils.debug('{!s} done'.format(target_etc_default_path))
-
-def setup_locales_test(install_path):
-    locale_conf = libcalamares.globalstorage.value("localeConf")
     if not locale_conf:
         locale_conf = { 'LANG': 'en_US.UTF-8' }
 
@@ -143,6 +103,19 @@ def configure_services(root_install_path):
     if os.path.isdir(install_data_dir):
         shutil.rmtree(install_data_dir, True)
 
+def remove_installer_desktop(install_path):
+    username = libcalamares.globalstorage.value("username")
+    if not username:
+        libcalamares.utils.debug("No username found; skipping Installer.desktop removal.")
+        return
+
+    desktop_path = os.path.join(install_path, "home", username, "Desktop", "Installer.desktop")
+    if os.path.exists(desktop_path):
+        try:
+            os.remove(desktop_path)
+            libcalamares.utils.debug(f"Removed {desktop_path}")
+        except Exception as e:
+            libcalamares.utils.debug(f"Failed to remove {desktop_path}: {e}")
 
 def run():
     """ Mocaccino Calamares Post-install module """
@@ -152,9 +125,10 @@ def run():
     # Get install path
     install_path = libcalamares.globalstorage.value('rootMountPoint')
     # Test new version
-    setup_locales_test(install_path)
+    setup_locales(install_path)
     setup_audio(install_path)
     configure_services(install_path)
+    remove_installer_desktop(install_path)
 
     if len(luet_packages2remove) > 0:
         args = ["luet", "uninstall", "-y"]
