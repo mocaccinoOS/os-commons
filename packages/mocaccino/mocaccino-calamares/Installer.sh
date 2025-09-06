@@ -1,2 +1,2 @@
 #!/bin/sh
-pkexec "/usr/bin/calamares" "$@"
+exec "/usr/bin/calamares" "$@"
