@@ -82,6 +82,11 @@ if [ ! -e "/etc/sysctl.conf" ]; then
 	touch /etc/sysctl.conf
 fi
 
+# Required for systemd boot logs
+if [ ! -d "/var/log/journal" ]; then
+	mkdir -p /var/log/journal
+fi
+
 if [ ! -d "/var/tmp" ]; then
 	mkdir -p /var/tmp
 fi
