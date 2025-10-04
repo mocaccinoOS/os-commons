@@ -24,19 +24,106 @@ Presentation
     id: presentation
 
     Timer {
-        interval: 10000
+        interval: 5000 // Set to 5 seconds (5000ms) for each slide
         running: true
         repeat: true
         onTriggered: presentation.goToNextSlide()
     }
-    
-	Slide {
-		anchors.fill: parent
-		Image {
-			id: background1
-			source: "welcome.png"
-			anchors.fill: parent
-		}
-	}
 
+    // --------------------------------------------------
+    // START OF CUSTOM SLIDES
+    // --------------------------------------------------
+
+    // MOS_1: MocaccinoOS Logo / Layers (Initial Image)
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_1.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_2: Office Work
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_2.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_3: Gaming
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_3.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_4: Developer
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_4.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_5: Conference Call
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_5.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_6: Super Speed
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_6.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_7: Secure
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_7.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_8: SDR / Radio Astronomy
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_8.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_9: Design & Create
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_9.jpg"
+            anchors.fill: parent
+        }
+    }
+
+    // MOS_10: Support Us / Donate (IMPORTANT: Donate link)
+    Slide {
+        anchors.fill: parent
+        Image {
+            source: "images/MOS_10.jpg"
+            anchors.fill: parent
+        }
+    }
+    // --------------------------------------------------
+    // END OF CUSTOM SLIDES
+    // --------------------------------------------------
 }
