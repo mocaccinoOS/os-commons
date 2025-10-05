@@ -24,7 +24,7 @@ Presentation
     id: presentation
 
     Timer {
-        interval: 5000 // Set to 5 seconds (5000ms) for each slide
+        interval: 8000 // Set to 8 seconds (8000ms) for each slide
         running: true
         repeat: true
         onTriggered: presentation.goToNextSlide()
