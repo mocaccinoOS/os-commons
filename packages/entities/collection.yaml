@@ -729,6 +729,15 @@ packages:
   shell: /bin/bash
   requires: *requires
 - category: entity
+  name: sauerbraten
+  version: "1"
+  group: true
+  gid: 286
+  uid: 286
+  home: /dev/null
+  shell: /sbin/nologin
+  requires: *requires
+- category: entity
   name: squid
   version: "1"
   group: true
