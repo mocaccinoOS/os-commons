@@ -2305,11 +2305,11 @@ packages:
   requires: *requires
 - category: entity
   name: greetd
-  version: "3"
+  version: "4"
   group: true
   gid: 396
   uid: 396
-  home: /dev/null
+  home: /var/lib/greetd
   shell: /sbin/nologin
   groupadd: "video"
   requires:
