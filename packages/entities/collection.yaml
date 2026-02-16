@@ -2046,6 +2046,12 @@ packages:
   gid: 36
   requires: *requires
 - category: entity
+  name: shadow
+  version: "2"
+  onlygroup: true
+  gid: 42
+  requires: *requires
+- category: entity
   name: fingerprint
   version: "2"
   onlygroup: true
