@@ -2268,6 +2268,12 @@ packages:
   gid: 387
   requires: *requires
 - category: entity
+  name: cuse
+  version: "1"
+  onlygroup: true
+  gid: 554
+  requires: *requires
+- category: entity
   name: cdrom
   version: "2"
   onlygroup: true
