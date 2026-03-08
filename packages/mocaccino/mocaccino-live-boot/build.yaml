@@ -26,6 +26,10 @@ steps:
 # Append cdroot to boot options to trigger MocaccinoOS-live startup scripts
 - sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7/g' /boot/uefi/loader/entries/mll-x86_64.conf
 - sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7/g' /loader/entries/mll-x86_64.conf
+# Add safe graphics boot option
+- cp /boot/uefi/loader/entries/mll-x86_64.conf /boot/uefi/loader/entries/mocaccino-safe.conf
+- sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7 nomodeset/g' /boot/uefi/loader/entries/mocaccino-safe.conf
+- sed -i 's/MocaccinoOS/MocaccinoOS (safe graphics)/g' /boot/uefi/loader/entries/mocaccino-safe.conf
 - sed -i 's/APPEND/APPEND cdroot rootdelay=7/g' /boot/bios/boot/syslinux/syslinux.cfg
 - sed -i 's/APPEND/APPEND cdroot rootdelay=7/g' /boot/syslinux/syslinux.cfg
 
