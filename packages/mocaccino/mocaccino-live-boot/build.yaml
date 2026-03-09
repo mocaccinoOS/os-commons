@@ -34,7 +34,7 @@ steps:
 
 # Add safe graphics boot option (UEFI)
 - cp /boot/uefi/loader/entries/mll-x86_64.conf /boot/uefi/loader/entries/mocaccino-safe.conf
-- sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7 nomodeset/g' /boot/uefi/loader/entries/mocaccino-safe.conf
+- sed -i 's/rootfs.xz/rootfs.xz nomodeset/g' /boot/uefi/loader/entries/mocaccino-safe.conf
 - sed -i 's/MocaccinoOS/MocaccinoOS (safe graphics)/g' /boot/uefi/loader/entries/mocaccino-safe.conf
 
 # Copy UEFI loader to ISO tree AFTER safe entry exists
