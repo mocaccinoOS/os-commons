@@ -12,26 +12,30 @@ prelude:
 - cd minimal && git checkout e4ab26d8ee2e9e2e24d47852474d453b19cb0ced
 - rm -rfv /boot || true
 steps:
+# Move Minimal Linux Live boot files into /boot
 - mv minimal/src/minimal_boot/ /boot/
+
+# Rename Minimal → MocaccinoOS in all bootloader files
 - sed -i 's/Minimal/MocaccinoOS/g' /boot/bios/EFI/BOOT/startup.nsh
 - sed -i 's/Minimal/MocaccinoOS/g' /boot/bios/boot/syslinux/syslinux.cfg
 - sed -i 's/Minimal/MocaccinoOS/g' /boot/uefi/loader/entries/mll-x86.conf
 - sed -i 's/Minimal/MocaccinoOS/g' /boot/uefi/loader/entries/mll-x86_64.conf
-# Needed during ISOIMAGE creation
-- cp -rfv /boot/bios/* /
-- cp -rfv /boot/uefi/loader /
-# Drop x86 boot option
+
+# Drop 32-bit boot entry
 - rm -rfv /boot/uefi/loader/entries/mll-x86.conf
-- rm -rfv /loader/entries/mll-x86.conf
-# Append cdroot to boot options to trigger MocaccinoOS-live startup scripts
+- rm -rfv /loader/entries/mll-x86.conf || true
+
+# Append cdroot to normal UEFI boot option
 - sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7/g' /boot/uefi/loader/entries/mll-x86_64.conf
 - sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7/g' /loader/entries/mll-x86_64.conf
-# Add safe graphics boot option
+
+# Add UEFI safe graphics entry
 - cp /boot/uefi/loader/entries/mll-x86_64.conf /boot/uefi/loader/entries/mocaccino-safe.conf
 - sed -i 's/rootfs.xz/rootfs.xz cdroot rootdelay=7 nomodeset/g' /boot/uefi/loader/entries/mocaccino-safe.conf
 - sed -i 's/MocaccinoOS/MocaccinoOS (safe graphics)/g' /boot/uefi/loader/entries/mocaccino-safe.conf
-- sed -i 's/APPEND/APPEND cdroot rootdelay=7/g' /boot/bios/boot/syslinux/syslinux.cfg
-- sed -i 's/APPEND/APPEND cdroot rootdelay=7/g' /boot/syslinux/syslinux.cfg
+
+# Copy UEFI loader to ISO tree AFTER safe entry exists
+- cp -rfv /boot/uefi/loader /
 
 includes:
 - /boot$|/boot/.*
