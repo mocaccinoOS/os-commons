@@ -1,2 +1,8 @@
 [Default Applications]
 application/pdf=xreader.desktop
+image/png=xviewer.desktop
+image/jpeg=xviewer.desktop
+image/gif=xviewer.desktop
+image/webp=xviewer.desktop
+image/tiff=xviewer.desktop
+image/bmp=xviewer.desktop
