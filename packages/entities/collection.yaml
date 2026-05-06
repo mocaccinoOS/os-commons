@@ -2275,6 +2275,12 @@ packages:
   gid: 26753
   requires: *requires
 - category: entity
+  name: onepassword-cli
+  version: "2"
+  onlygroup: true
+  gid: 26763
+  requires: *requires
+- category: entity
   version: "4"
   name: alias
   uid: 200
