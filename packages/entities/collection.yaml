@@ -2492,7 +2492,6 @@ packages:
 - category: entity
   version: "1"
   name: sndiod
-  kind: "user"
   uid: 461
   group: "audio"
   info: "Daemon user for sndio"
