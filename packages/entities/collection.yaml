@@ -2493,7 +2493,7 @@ packages:
   version: "1"
   name: sndiod
   uid: 461
-  group: "audio"
+  gid: 18
   info: "Daemon user for sndio"
   home: "/dev/null"
   shell: "/sbin/nologin"
