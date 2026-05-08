@@ -2478,12 +2478,25 @@ packages:
   - category: entity
     name: nobody
     version: ">=0"
+# - category: entity
+#   version: "1"
+#   name: sndio
+#   gid: 18
+#   uid: 461
+#   home: /dev/null
+#   shell: "/sbin/nologin"
+#   requires:
+#   - category: entity
+#     name: audio
+#     version: ">=0"
 - category: entity
   version: "1"
-  name: sndio
-  gid: 18
+  name: sndiod
+  kind: "user"
   uid: 461
-  home: /dev/null
+  group: "audio"
+  info: "Daemon user for sndio"
+  home: "/dev/null"
   shell: "/sbin/nologin"
   requires:
   - category: entity
