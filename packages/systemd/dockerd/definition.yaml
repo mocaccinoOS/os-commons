@@ -1,6 +1,8 @@
 name: dockerd
 category: systemd-service
-version: "0.2"
+version: "0.2+1"
+license: "Apache-2.0"
+description: "Systemd service and socket configuration files to manage and automatically start the Docker daemon (dockerd) on MocaccinoOS."
 requires:
 - category: entity
   name: "docker"
