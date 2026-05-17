@@ -1,3 +1,7 @@
-name: mocaccino-icons
-category: system
-version: "0.2.2"
+name: "mocaccino-icons"
+category: "system"
+version: "0.2.2+1"
+uri:
+  - https://mocaccino.org
+license: "CC-BY-SA-4.0"
+description: "The official MocaccinoOS branding icons, logos, and scalable vector graphics used for system identity and application menus"
