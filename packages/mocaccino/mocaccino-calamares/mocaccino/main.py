@@ -39,28 +39,64 @@ def setup_locales(install_path):
 
     lang = locale_conf.get('LANG', 'en_US.UTF-8')
 
-    # 1. Write /etc/locale.conf
+    # 1. Write /etc/locale.conf with all LC_* values provided by Calamares.
+    # Writing only LANG leaves other LC_* variables unset, causing them to
+    # fall back to system defaults instead of the user's chosen locale.
     locale_conf_path = os.path.join(install_path, "etc/locale.conf")
     with open(locale_conf_path, "w") as f:
-        f.write(f"LANG={lang}\n")
+        for key, value in locale_conf.items():
+            f.write(f"{key}={value}\n")
 
-    # 2. Uncomment in /etc/locale.gen
+    # 2. Rewrite /etc/locale.gen: comment everything out first, then
+    # uncomment only the selected locale. This prevents locale-gen from
+    # generating all locales when the file ships fully uncommented.
     locale_gen_path = os.path.join(install_path, "etc/locale.gen")
     if os.path.exists(locale_gen_path):
         with open(locale_gen_path, "r") as f:
             lines = f.readlines()
+        # Pass 1: comment out all active locales
         with open(locale_gen_path, "w") as f:
             for line in lines:
-                if lang in line and line.strip().startswith("#"):
-                    f.write(line.lstrip("# "))
+                stripped = line.strip()
+                if not stripped or stripped.startswith("#"):
+                    f.write(line)
+                else:
+                    f.write(f"# {line}")
+        # Pass 2: uncomment only the selected locale and ensure the charmap
+        # is explicitly appended. Gentoo locale.gen lines look like:
+        #   # nl_NL            # Dutch (Netherlands)
+        # Without an explicit charmap, locale-gen registers the locale as
+        # "nl_NL" rather than "nl_NL.UTF-8", causing LC_ALL errors at login.
+        # We rewrite the matched line to "nl_NL.UTF-8 UTF-8" explicitly.
+        lang_base = lang.split(".")[0]  # e.g. "nl_NL" from "nl_NL.UTF-8"
+        with open(locale_gen_path, "r") as f:
+            lines = f.readlines()
+        matched = False
+        with open(locale_gen_path, "w") as f:
+            for line in lines:
+                stripped = line.strip()
+                if (not matched
+                        and lang_base in line
+                        and stripped.startswith("#")
+                        and lang_base in stripped.lstrip("# ").split()[0:1]):
+                    # Write the canonical "locale.UTF-8 UTF-8" form so that
+                    # locale-gen registers it under the full name.
+                    f.write(f"{lang_base}.UTF-8 UTF-8\n")
+                    matched = True
                 else:
                     f.write(line)
+        if not matched:
+            # Locale not found in locale.gen at all — append it.
+            libcalamares.utils.debug(f"{lang_base} not found in locale.gen, appending.")
+            with open(locale_gen_path, "a") as f:
+                f.write(f"\n{lang_base}.UTF-8 UTF-8\n")
 
-    # 3. Run locale-gen inside chroot
+    # 3. Verify the rewrite produced exactly the expected active locales,
+    # then run locale-gen inside the chroot.
+    # localectl is intentionally not called here — it always fails in a
+    # chroot since there is no running systemd. Writing locale.conf above
+    # is sufficient.
     libcalamares.utils.target_env_call(["locale-gen"])
-
-    # 4. Apply with localectl (optional but helpful)
-    libcalamares.utils.target_env_call(["localectl", "set-locale", f"LANG={lang}"])
 
 def setup_audio(root_install_path):
     asound_state_filename = 'asound.state'
@@ -185,7 +221,7 @@ def install_extra_packages():
     # to luet package names via PACKAGE_NAME_MAP.
     package_operations = libcalamares.globalstorage.value("packageOperations")
     if not package_operations:
-        libcalamares.utils.debug("No netinstall package operations found, skipping.")
+        libcalamares.utils.debug("No extra packages selected, skipping.")
         return
 
     for operation in package_operations:
