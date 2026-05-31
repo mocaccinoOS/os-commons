@@ -135,13 +135,40 @@ def remove_installer_desktop(install_path):
 # the repository is enabled automatically before installing anything.
 # ==============================================================================
 
+# Mapping from netinstall display names to luet package names.
+# Netinstall stores the human-readable "name" field in globalstorage,
+# not the "packageName" field, so we need this map to resolve them.
+PACKAGE_NAME_MAP = {
+    # Browsers
+    "Chromium":                    "apps/chromium",
+    "Brave":                       "apps/brave",
+    "Vivaldi":                     "apps/vivaldi",
+    "Opera":                       "apps/opera",
+    "Tor Browser":                 "apps/torbrowser",
+    "Google Chrome":               "apps/google-chrome",
+    "Konqueror":                   "apps/konqueror",
+    # Office
+    "Evolution":                   "apps/evolution",
+    "FreeOffice (Community)":      "apps/freeoffice",
+    "LibreOffice (Community)":     "apps/libreoffice",
+    "Calligra (Community)":        "apps/calligra",
+    # Games
+    "Steam":                       "apps/steam",
+    "NVIDIA Drivers":              "kernel-modules/nvidia-drivers-lts",
+    "Lutris (Community)":          "apps/lutris",
+    "Wine Staging (Community)":    "apps/wine-staging",
+    # Development
+    "GCC":                         "devel/gcc",
+    "CMake":                       "devel/cmake",
+    "KDevelop (Community)":        "apps/kdevelop",
+    "VSCodium (Community)":        "apps/vscodium",
+    "Bluefish (Community)":        "apps/bluefish",
+}
+
 # Packages that require the community repository to be enabled first.
 COMMUNITY_PACKAGES = {
-    # Office
     "apps/freeoffice", "apps/libreoffice", "apps/calligra",
-    # Games
     "apps/lutris", "apps/wine-staging",
-    # Development
     "apps/kdevelop", "apps/vscodium", "apps/bluefish",
 }
 
@@ -153,19 +180,20 @@ def install_extra_packages():
     selected_packages = []
     needs_community = False
 
-    # netinstall writes to "packageOperations" as a list of operation dicts.
-    # Each dict may have an "install" key containing a list of package names.
+    # netinstall writes selected package display names to "packageOperations"
+    # as a list of dicts with a "try_install" key. We map display names back
+    # to luet package names via PACKAGE_NAME_MAP.
     package_operations = libcalamares.globalstorage.value("packageOperations")
-    libcalamares.utils.debug(f"packageOperations raw value: {package_operations}")
     if not package_operations:
         libcalamares.utils.debug("No netinstall package operations found, skipping.")
         return
 
     for operation in package_operations:
-        libcalamares.utils.debug(f"Operation keys: {list(operation.keys())}, value: {operation}")
-        for pkg in operation.get("install", []):
-            pkg = pkg.strip()
+        for display_name in operation.get("try_install", []):
+            display_name = display_name.strip()
+            pkg = PACKAGE_NAME_MAP.get(display_name)
             if not pkg:
+                libcalamares.utils.debug(f"Unknown package display name: {display_name!r}, skipping.")
                 continue
             selected_packages.append(pkg)
             if pkg in COMMUNITY_PACKAGES:
