@@ -117,6 +117,86 @@ def remove_installer_desktop(install_path):
         except Exception as e:
             libcalamares.utils.debug(f"Failed to remove {desktop_path}: {e}")
 
+
+# ==============================================================================
+# PACKAGECHOOSER INTEGRATION
+#
+# The packagechooser module presents optional software selection pages during
+# the Calamares wizard (one page per category: browsers, office, games, devel).
+# Each page is configured via a packagechooser_<category>.conf file in
+# /etc/calamares/modules/ and registered as an instance in settings.conf.
+#
+# When the user finishes the wizard, packagechooser writes the selected item
+# IDs to globalstorage as a comma-separated string, one key per category:
+#   packagechooser_browsers, packagechooser_office,
+#   packagechooser_games,   packagechooser_devel
+#
+# Item IDs in the .conf files are set to the full luet package name
+# (e.g. "apps/chromium") so they can be passed directly to luet install.
+#
+# Packages that live in the community repository (mocaccino-community-stable)
+# are listed in COMMUNITY_PACKAGES. If any such package is selected,
+# the repository is enabled first before installing anything.
+# ==============================================================================
+
+# Packages that require the community repository to be enabled first.
+COMMUNITY_PACKAGES = {
+    # Office
+    "apps/freeoffice", "apps/libreoffice", "apps/calligra",
+    # Games
+    "apps/lutris", "apps/wine-staging",
+    # Development
+    "apps/kdevelop", "apps/vscodium", "apps/bluefish",
+}
+
+COMMUNITY_REPO = "repository/mocaccino-community-stable"
+
+# Globalstorage keys written by each packagechooser instance.
+# Key format is packagechooser_<instance-id> as defined in settings.conf.
+CHOOSER_INSTANCES = [
+    "packagechooser_browsers",
+    "packagechooser_office",
+    "packagechooser_games",
+    "packagechooser_devel",
+]
+
+
+def install_extra_packages():
+    """Read packagechooser selections from globalstorage and install via luet."""
+    selected_packages = []
+    needs_community = False
+
+    for gs_key in CHOOSER_INSTANCES:
+        value = libcalamares.globalstorage.value(gs_key)
+        if not value:
+            continue
+        # GS value is a comma-separated list of item IDs, which map
+        # directly to luet package names via the packages: field in the conf.
+        for pkg in value.split(","):
+            pkg = pkg.strip()
+            if not pkg:
+                continue
+            selected_packages.append(pkg)
+            if pkg in COMMUNITY_PACKAGES:
+                needs_community = True
+
+    if not selected_packages:
+        libcalamares.utils.debug("No extra packages selected, skipping.")
+        return
+
+    # Enable community repository first if any selected package needs it.
+    if needs_community:
+        libcalamares.utils.debug(f"Enabling community repository: {COMMUNITY_REPO}")
+        libcalamares.utils.target_env_call(["luet", "install", "-y", COMMUNITY_REPO])
+
+    for pkg in selected_packages:
+        libcalamares.utils.debug(f"Installing extra package: {pkg}")
+        libcalamares.utils.target_env_call(["luet", "install", "-y", pkg])
+
+# ==============================================================================
+# END PACKAGECHOOSER INTEGRATION
+# ==============================================================================
+
 def run():
     """ Mocaccino Calamares Post-install module """
     libcalamares.utils.target_env_call([
@@ -129,6 +209,7 @@ def run():
     setup_audio(install_path)
     configure_services(install_path)
     remove_installer_desktop(install_path)
+    install_extra_packages()
 
     if len(luet_packages2remove) > 0:
         args = ["luet", "uninstall", "-y"]
