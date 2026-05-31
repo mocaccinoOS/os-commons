@@ -183,12 +183,12 @@ def remove_installer_desktop(install_path):
 PACKAGE_NAME_MAP = {
     # Browsers
     "Chromium":                    "apps/chromium",
-    "Brave":                       "apps/brave",
-    "Vivaldi":                     "apps/vivaldi",
-    "Opera":                       "apps/opera",
-    "Tor Browser":                 "apps/torbrowser",
-    "Google Chrome":               "apps/google-chrome",
-    "Konqueror":                   "apps/konqueror",
+    "Brave (Community)":           "apps/brave",
+    "Vivaldi (Community)":         "apps/vivaldi",
+    "Opera (Community)":           "apps/opera",
+    "Tor Browser (Community)":     "apps/torbrowser",
+    "Google Chrome (Community)":   "apps/google-chrome",
+    "Konqueror (Community)":       "apps/konqueror",
     # Office
     "Evolution":                   "apps/evolution",
     "FreeOffice (Community)":      "apps/freeoffice",
