@@ -156,11 +156,13 @@ def install_extra_packages():
     # netinstall writes to "packageOperations" as a list of operation dicts.
     # Each dict may have an "install" key containing a list of package names.
     package_operations = libcalamares.globalstorage.value("packageOperations")
+    libcalamares.utils.debug(f"packageOperations raw value: {package_operations}")
     if not package_operations:
         libcalamares.utils.debug("No netinstall package operations found, skipping.")
         return
 
     for operation in package_operations:
+        libcalamares.utils.debug(f"Operation keys: {list(operation.keys())}, value: {operation}")
         for pkg in operation.get("install", []):
             pkg = pkg.strip()
             if not pkg:
