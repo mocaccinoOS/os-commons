@@ -37,8 +37,6 @@ def setup_locales(install_path):
     if not locale_conf:
         locale_conf = { 'LANG': 'en_US.UTF-8' }
 
-    lang = locale_conf.get('LANG', 'en_US.UTF-8')
-
     # 1. Write /etc/locale.conf with all LC_* values provided by Calamares.
     # Writing only LANG leaves other LC_* variables unset, causing them to
     # fall back to system defaults instead of the user's chosen locale.
@@ -47,49 +45,57 @@ def setup_locales(install_path):
         for key, value in locale_conf.items():
             f.write(f"{key}={value}\n")
 
-    # 2. Rewrite /etc/locale.gen: comment everything out first, then
-    # uncomment only the selected locale. This prevents locale-gen from
-    # generating all locales when the file ships fully uncommented.
+    # 2. Rewrite /etc/locale.gen: ensure all required locales are uncommented
+    # and formatted correctly. This prevents LC_ALL errors when multiple
+    # locales are used (e.g. LANG=en_US.UTF-8 but LC_TIME=nl_NL.UTF-8)
+    # while still avoiding generating ALL locales.
     locale_gen_path = os.path.join(install_path, "etc/locale.gen")
     if os.path.exists(locale_gen_path):
+        # Collect all unique locale bases (e.g., "en_US", "nl_NL") from config
+        required_bases = set()
+        for val in locale_conf.values():
+            if val and val not in ("C", "POSIX"):
+                # Extract base part before . or @
+                base = val.split(".")[0].split("@")[0]
+                required_bases.add(base)
+
         with open(locale_gen_path, "r") as f:
             lines = f.readlines()
-        # Pass 1: comment out all active locales
+
+        new_lines = []
+        found_bases = set()
+        for line in lines:
+            stripped = line.strip()
+            if not stripped:
+                new_lines.append(line)
+                continue
+
+            # Extract the locale base from the current line
+            content = stripped.lstrip("# ").split()
+            first_word = content[0] if content else ""
+            line_base = first_word.split(".")[0].split("@")[0]
+
+            if line_base in required_bases:
+                # If this is one of our required locales, ensure it's uncommented
+                # and uses the canonical "locale.UTF-8 UTF-8" format.
+                if line_base not in found_bases:
+                    new_lines.append(f"{line_base}.UTF-8 UTF-8\n")
+                    found_bases.add(line_base)
+            elif not stripped.startswith("#"):
+                # If the line is active but not required, comment it out.
+                new_lines.append(f"# {line}")
+            else:
+                # Otherwise, keep the comment as-is.
+                new_lines.append(line)
+
+        # Append any required locales that weren't found in the template.
+        for base in sorted(required_bases):
+            if base not in found_bases:
+                libcalamares.utils.debug(f"{base} not found in locale.gen, appending.")
+                new_lines.append(f"{base}.UTF-8 UTF-8\n")
+
         with open(locale_gen_path, "w") as f:
-            for line in lines:
-                stripped = line.strip()
-                if not stripped or stripped.startswith("#"):
-                    f.write(line)
-                else:
-                    f.write(f"# {line}")
-        # Pass 2: uncomment only the selected locale and ensure the charmap
-        # is explicitly appended. Gentoo locale.gen lines look like:
-        #   # nl_NL            # Dutch (Netherlands)
-        # Without an explicit charmap, locale-gen registers the locale as
-        # "nl_NL" rather than "nl_NL.UTF-8", causing LC_ALL errors at login.
-        # We rewrite the matched line to "nl_NL.UTF-8 UTF-8" explicitly.
-        lang_base = lang.split(".")[0]  # e.g. "nl_NL" from "nl_NL.UTF-8"
-        with open(locale_gen_path, "r") as f:
-            lines = f.readlines()
-        matched = False
-        with open(locale_gen_path, "w") as f:
-            for line in lines:
-                stripped = line.strip()
-                if (not matched
-                        and lang_base in line
-                        and stripped.startswith("#")
-                        and lang_base in stripped.lstrip("# ").split()[0:1]):
-                    # Write the canonical "locale.UTF-8 UTF-8" form so that
-                    # locale-gen registers it under the full name.
-                    f.write(f"{lang_base}.UTF-8 UTF-8\n")
-                    matched = True
-                else:
-                    f.write(line)
-        if not matched:
-            # Locale not found in locale.gen at all — append it.
-            libcalamares.utils.debug(f"{lang_base} not found in locale.gen, appending.")
-            with open(locale_gen_path, "a") as f:
-                f.write(f"\n{lang_base}.UTF-8 UTF-8\n")
+            f.writelines(new_lines)
 
     # 3. Verify the rewrite produced exactly the expected active locales,
     # then run locale-gen inside the chroot.
