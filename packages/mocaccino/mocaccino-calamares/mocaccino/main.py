@@ -117,6 +117,75 @@ def remove_installer_desktop(install_path):
         except Exception as e:
             libcalamares.utils.debug(f"Failed to remove {desktop_path}: {e}")
 
+
+# ==============================================================================
+# NETINSTALL INTEGRATION
+#
+# The netinstall module presents a multi-select checklist during the Calamares
+# wizard, configured via /etc/calamares/modules/netinstall.conf.
+# Package names (packageName fields) are full luet package names so they can
+# be passed directly to luet install.
+#
+# netinstall writes selected packages to globalstorage under the key
+# "packageOperations" as a list of dicts. We extract the "install" list
+# from that and call luet install for each package.
+#
+# Packages that live in the community repository (mocaccino-community-stable)
+# are listed in COMMUNITY_PACKAGES. If any such package is selected,
+# the repository is enabled automatically before installing anything.
+# ==============================================================================
+
+# Packages that require the community repository to be enabled first.
+COMMUNITY_PACKAGES = {
+    # Office
+    "apps/freeoffice", "apps/libreoffice", "apps/calligra",
+    # Games
+    "apps/lutris", "apps/wine-staging",
+    # Development
+    "apps/kdevelop", "apps/vscodium", "apps/bluefish",
+}
+
+COMMUNITY_REPO = "repository/mocaccino-community-stable"
+
+
+def install_extra_packages():
+    """Read netinstall selections from globalstorage and install via luet."""
+    selected_packages = []
+    needs_community = False
+
+    # netinstall writes to "packageOperations" as a list of operation dicts.
+    # Each dict may have an "install" key containing a list of package names.
+    package_operations = libcalamares.globalstorage.value("packageOperations")
+    if not package_operations:
+        libcalamares.utils.debug("No netinstall package operations found, skipping.")
+        return
+
+    for operation in package_operations:
+        for pkg in operation.get("install", []):
+            pkg = pkg.strip()
+            if not pkg:
+                continue
+            selected_packages.append(pkg)
+            if pkg in COMMUNITY_PACKAGES:
+                needs_community = True
+
+    if not selected_packages:
+        libcalamares.utils.debug("No extra packages selected, skipping.")
+        return
+
+    # Enable community repository first if any selected package needs it.
+    if needs_community:
+        libcalamares.utils.debug(f"Enabling community repository: {COMMUNITY_REPO}")
+        libcalamares.utils.target_env_call(["luet", "install", "-y", COMMUNITY_REPO])
+
+    for pkg in selected_packages:
+        libcalamares.utils.debug(f"Installing extra package: {pkg}")
+        libcalamares.utils.target_env_call(["luet", "install", "-y", pkg])
+
+# ==============================================================================
+# END NETINSTALL INTEGRATION
+# ==============================================================================
+
 def run():
     """ Mocaccino Calamares Post-install module """
     libcalamares.utils.target_env_call([
@@ -129,6 +198,7 @@ def run():
     setup_audio(install_path)
     configure_services(install_path)
     remove_installer_desktop(install_path)
+    install_extra_packages()
 
     if len(luet_packages2remove) > 0:
         args = ["luet", "uninstall", "-y"]
