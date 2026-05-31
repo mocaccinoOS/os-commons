@@ -15,6 +15,12 @@ strings:
     releaseNotesUrl:     https://github.com/mocaccinoOS/mocaccino/releases
     donateUrl:           https://www.mocaccino.org/docs/donate
 
+interface:
+    showSupportUrl:        false
+    showKnownIssuesUrl:    false
+    showReleaseNotesUrl:   false
+    showDonateUrl:         false
+
 images:
     productLogo:         "mocaccino_logo.png"
     productIcon:         "mocaccino_logo.png"
