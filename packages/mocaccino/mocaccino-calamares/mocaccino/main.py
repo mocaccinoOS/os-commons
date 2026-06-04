@@ -260,6 +260,14 @@ def install_extra_packages():
 
 def run():
     """ Mocaccino Calamares Post-install module """
+    # Merge any unmerged config files (e.g. leftovers from repo refreshes
+    # triggered by the Calamares Software module) to prevent duplicate
+    # repository entries in Luet on the installed system.
+    libcalamares.utils.target_env_call([
+        'sh', '-c',
+        'mos config-update update --interactive=false -p /etc/luet/repos.conf.d || true'
+    ])
+
     libcalamares.utils.target_env_call([
         'mocaccino-dracut', '--rebuild-all', '--force'
     ])
