@@ -260,6 +260,14 @@ def install_extra_packages():
 
 def run():
     """ Mocaccino Calamares Post-install module """
+    # Get install path
+    install_path = libcalamares.globalstorage.value('rootMountPoint')
+    setup_locales(install_path)
+    setup_audio(install_path)
+    configure_services(install_path)
+    remove_installer_desktop(install_path)
+    install_extra_packages()
+
     # Merge any unmerged config files (e.g. leftovers from repo refreshes
     # triggered by the Calamares Software module) to prevent duplicate
     # repository entries in Luet on the installed system.
@@ -271,14 +279,6 @@ def run():
     libcalamares.utils.target_env_call([
         'mocaccino-dracut', '--rebuild-all', '--force'
     ])
-    # Get install path
-    install_path = libcalamares.globalstorage.value('rootMountPoint')
-    # Test new version
-    setup_locales(install_path)
-    setup_audio(install_path)
-    configure_services(install_path)
-    remove_installer_desktop(install_path)
-    install_extra_packages()
 
     if len(luet_packages2remove) > 0:
         args = ["luet", "uninstall", "-y"]
