@@ -276,6 +276,11 @@ def run():
         'mos config-update update --interactive=false -p /etc/luet/repos.conf.d || true'
     ])
 
+    # Remove live initramfs; installed systems generate their own via dracut.
+    libcalamares.utils.target_env_call([
+        'luet', 'uninstall', '-y', 'kernel/mocaccino-lts-initramfs'
+    ])
+
     libcalamares.utils.target_env_call([
         'mocaccino-dracut', '--rebuild-all', '--force'
     ])
