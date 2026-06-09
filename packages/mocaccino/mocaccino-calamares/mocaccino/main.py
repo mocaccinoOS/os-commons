@@ -199,6 +199,9 @@ PACKAGE_NAME_MAP = {
     "NVIDIA Drivers":              "kernel-modules/nvidia-drivers-lts",
     "Lutris (Community)":          "apps/lutris",
     "Wine Staging (Community)":    "apps/wine-staging",
+    # Internationalization
+    "Input Methods (Fcitx & IBus)":    "layers/input",
+    "Spell Checking Dictionaries":     "app/myspell-dicts",
     # Development
     "GCC":                         "devel/gcc",
     "CMake":                       "devel/cmake",
