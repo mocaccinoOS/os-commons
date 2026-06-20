@@ -194,6 +194,10 @@ PACKAGE_NAME_MAP = {
     "FreeOffice (Community)":      "apps/freeoffice",
     "LibreOffice (Community)":     "apps/libreoffice",
     "Calligra (Community)":        "apps/calligra",
+    # Graphics
+    "GIMP (Community)":            "apps/gimp",
+    "Krita (Community)":           "apps/krita",
+    "Inkscape (Community)":        "apps/inkscape",
     # Games
     "Steam":                       "apps/steam",
     "NVIDIA Drivers":              "kernel-modules/nvidia-drivers-lts",
@@ -214,6 +218,7 @@ PACKAGE_NAME_MAP = {
 COMMUNITY_PACKAGES = {
     "apps/freeoffice", "apps/libreoffice", "apps/calligra",
     "apps/lutris", "apps/wine-staging",
+    "apps/gimp", "apps/krita", "apps/inkscape",
     "apps/kdevelop", "apps/vscodium", "apps/bluefish",
 }
 
