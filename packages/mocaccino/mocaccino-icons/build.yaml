@@ -1,22 +1,22 @@
 image: "alpine"
 
 steps:
-# 1. Copy the assets with explicit permissions (prefixed with /mocaccino-icons)
-- install -Dm644 files/mOS_logo.png /mocaccino-icons/usr/share/icons/mOS-icons/mOS_logo.png
-- install -Dm644 files/mOS_outlined_hl.png /mocaccino-icons/usr/share/icons/mOS-icons/mOS_outlined_hl.png
-- install -Dm644 files/mOS_outlined_w.png /mocaccino-icons/usr/share/icons/mOS-icons/mOS_outlined_w.png
-- install -Dm644 files/mOS_coffee_bean.png /mocaccino-icons/usr/share/icons/mOS-icons/mOS_coffee_bean.png
+# 1. Copy the assets with explicit permissions
+- install -Dm644 files/mOS_logo.png /usr/share/icons/mOS-icons/mOS_logo.png
+- install -Dm644 files/mOS_outlined_hl.png /usr/share/icons/mOS-icons/mOS_outlined_hl.png
+- install -Dm644 files/mOS_outlined_w.png /usr/share/icons/mOS-icons/mOS_outlined_w.png
+- install -Dm644 files/mOS_coffee_bean.png /usr/share/icons/mOS-icons/mOS_coffee_bean.png
 
 # 2. Setup the Symbolic Distributor Logo
-- install -Dm644 files/mOS_outlined_hl.svg /mocaccino-icons/usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg
+- install -Dm644 files/mOS_outlined_hl.svg /usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg
 
 # 3. Create symlinks for distributor logo and legacy branding
-- install -d /mocaccino-icons/usr/share/icons/hicolor/scalable/apps/
-- install -d /mocaccino-icons/usr/share/pixmaps/
+- install -d /usr/share/icons/hicolor/scalable/apps/
+- install -d /usr/share/pixmaps/
 
 # Distributor logo symlink
-- ln -sf /usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg /mocaccino-icons/usr/share/icons/hicolor/scalable/apps/distributor-logo-symbolic.svg
+- ln -sf /usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg /usr/share/icons/hicolor/scalable/apps/distributor-logo-symbolic.svg
 
 # Legacy branding symlinks
-- ln -sf /usr/share/icons/mOS-icons/mOS_outlined_hl.png /mocaccino-icons/usr/share/pixmaps/mocaccino.png
-- ln -sf /usr/share/icons/mOS-icons/mOS_outlined_hl.svg /mocaccino-icons/usr/share/icons/hicolor/scalable/apps/mocaccino.svg
+- ln -sf /usr/share/icons/mOS-icons/mOS_outlined_hl.png /usr/share/pixmaps/mocaccino.png
+- ln -sf /usr/share/icons/mOS-icons/mOS_outlined_hl.svg /usr/share/icons/hicolor/scalable/apps/mocaccino.svg
