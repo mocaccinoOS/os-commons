@@ -8,6 +8,7 @@ steps:
 - install -Dm644 files/mOS_coffee_bean.png  /usr/share/icons/mOS-icons/mOS_coffee_bean.png
 - install -Dm644 files/mOS_outlined_hl.svg  /usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg
 - install -Dm644 files/mOS_outlined_hl.svg  /usr/share/icons/mOS-icons/scalable/apps/start-here-symbolic.svg
+- install -Dm644 files/mOS_outlined_hl.svg  /usr/share/icons/mOS-icons/scalable/apps/mocaccino.svg
 
 # 2. Ensure directories exist
 - install -d /usr/share/icons/hicolor/scalable/apps/
@@ -21,4 +22,4 @@ steps:
 
 # Legacy branding symlinks
 - ln -sf /usr/share/icons/mOS-icons/mOS_outlined_hl.png /usr/share/pixmaps/mocaccino.png
-- ln -sf /usr/share/icons/mOS-icons/mOS_outlined_hl.svg /usr/share/icons/hicolor/scalable/apps/mocaccino.svg
+- ln -sf /usr/share/icons/mOS-icons/scalable/apps/mocaccino.svg /usr/share/icons/hicolor/scalable/apps/mocaccino.svg
