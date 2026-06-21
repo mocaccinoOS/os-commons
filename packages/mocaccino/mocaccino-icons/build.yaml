@@ -1,20 +1,18 @@
-image: "quay.io/mocaccino/extra"
-
-package_dir: /mocaccino-icons
+image: "alpine"
 
 steps:
 # 1. Create the destination directory structure
 - install -d /mocaccino-icons/usr/share/icons/mOS-icons/scalable/apps/
 
 # 2. Copy the assets with explicit permissions
-- install -m 0644 files/mOS_logo.png /mocaccino-icons/usr/share/icons/mOS-icons/
-- install -m 0644 files/mOS_outlined_hl.png /mocaccino-icons/usr/share/icons/mOS-icons/
-- install -m 0644 files/mOS_outlined_w.png /mocaccino-icons/usr/share/icons/mOS-icons/
-- install -m 0644 files/mOS_coffee_bean.png /mocaccino-icons/usr/share/icons/mOS-icons/
+- install -m 0644 files/mOS_logo.png /usr/share/icons/mOS-icons/
+- install -m 0644 files/mOS_outlined_hl.png /usr/share/icons/mOS-icons/
+- install -m 0644 files/mOS_outlined_w.png /usr/share/icons/mOS-icons/
+- install -m 0644 files/mOS_coffee_bean.png /usr/share/icons/mOS-icons/
 
 # 3. Setup the Symbolic Distributor Logo
-- install -m 0644 files/mOS_outlined_hl.svg /mocaccino-icons/usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg
+- install -m 0644 files/mOS_outlined_hl.svg /usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg
 
 # 4. Create the symlink for the distributor logo
-- install -d /mocaccino-icons/usr/share/icons/hicolor/scalable/apps/
+- install -d /usr/share/icons/hicolor/scalable/apps/
 - ln -sf /usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg /usr/share/icons/hicolor/scalable/apps/distributor-logo-symbolic.svg
