@@ -17,4 +17,4 @@ steps:
 
 # 4. Create the symlink for the distributor logo
 - install -d /mocaccino-icons/usr/share/icons/hicolor/scalable/apps/
-- ln -sf /mocaccino-icons/usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg /mocaccino-icons/usr/share/icons/hicolor/scalable/apps/distributor-logo-symbolic.svg
+- ln -sf /usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg /usr/share/icons/hicolor/scalable/apps/distributor-logo-symbolic.svg
