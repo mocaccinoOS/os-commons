@@ -6,15 +6,14 @@ steps:
 # 1. Create the destination directory structure
 - install -d /mocaccino-icons/usr/share/icons/mOS-icons/scalable/apps/
 
-# 2. Copy the assets
-- cp files/mOS_logo.png /mocaccino-icons/usr/share/icons/mOS-icons/
-- cp files/mOS_outlined_hl.png /mocaccino-icons/usr/share/icons/mOS-icons/
-- cp files/mOS_outlined_w.png /mocaccino-icons/usr/share/icons/mOS-icons/
-- cp files/mOS_coffee_bean.png /mocaccino-icons/usr/share/icons/mOS-icons/
+# 2. Copy the assets with explicit permissions
+- install -m 0644 files/mOS_logo.png /mocaccino-icons/usr/share/icons/mOS-icons/
+- install -m 0644 files/mOS_outlined_hl.png /mocaccino-icons/usr/share/icons/mOS-icons/
+- install -m 0644 files/mOS_outlined_w.png /mocaccino-icons/usr/share/icons/mOS-icons/
+- install -m 0644 files/mOS_coffee_bean.png /mocaccino-icons/usr/share/icons/mOS-icons/
 
 # 3. Setup the Symbolic Distributor Logo
-# Rename to -symbolic.svg so KDE automatically handles light/dark theme color inversion
-- cp files/mOS_outlined_hl.svg /mocaccino-icons/usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg
+- install -m 0644 files/mOS_outlined_hl.svg /mocaccino-icons/usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg
 
 # 4. Create the symlink for the distributor logo
 - install -d /mocaccino-icons/usr/share/icons/hicolor/scalable/apps/
