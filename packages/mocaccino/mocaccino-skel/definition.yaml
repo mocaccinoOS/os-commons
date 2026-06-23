@@ -1,6 +1,6 @@
 name: mocaccino-skel
 category: init
-version: 20260427+2
+version: 20260623+1
 description: "This package installs /etc/skel"
 requires:
 - name: "entities"

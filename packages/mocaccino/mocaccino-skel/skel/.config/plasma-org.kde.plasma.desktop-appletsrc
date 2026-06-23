@@ -88,6 +88,3 @@ lastScreen=0
 location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
-
-[Containments][15][Wallpaper][org.kde.image][General]
-Image=/usr/share/wallpapers/mocaccino-wallpaper/background.jpg
