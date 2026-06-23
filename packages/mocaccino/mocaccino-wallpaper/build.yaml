@@ -4,4 +4,5 @@ steps:
 - mkdir -p /usr/share/wallpapers/mocaccino-wallpaper
 - cp files/background.jpg /usr/share/wallpapers/mocaccino-wallpaper
 - cp files/metadata.json /usr/share/wallpapers/mocaccino-wallpaper
+- mkdir -p /usr/share/wallpapers/mocaccino-wallpaper/contents/images/
 - ln -sf /usr/share/wallpapers/mocaccino-wallpaper/background.jpg /usr/share/wallpapers/mocaccino-wallpaper/contents/images/background.jpg
