@@ -1,7 +1,7 @@
-image: "quay.io/mocaccino/extra"
-
-package_dir: /mocaccino-wallpaper
+image: "alpine"
 
 steps:
-- mkdir /mocaccino-wallpaper/usr/share/wallpapers/mocaccino-wallpaper -p
-- cp background.jpg /mocaccino-wallpaper/usr/share/wallpapers/mocaccino-wallpaper
+- mkdir -p /usr/share/wallpapers/mocaccino-wallpaper
+- cp files/background.jpg /usr/share/wallpapers/mocaccino-wallpaper
+- cp files/metadata.json /usr/share/wallpapers/mocaccino-wallpaper
+- ln -sf /usr/share/wallpapers/mocaccino-wallpaper/background.jpg /usr/share/wallpapers/mocaccino-wallpaper/contents/images/background.jpg
