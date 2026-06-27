@@ -256,7 +256,7 @@ def install_extra_packages():
     # Enable community repository first if any selected package needs it.
     if needs_community:
         libcalamares.utils.debug(f"Enabling community repository: {COMMUNITY_REPO}")
-        libcalamares.utils.target_env_call(["luet", "install", "-y", COMMUNITY_REPO])
+        libcalamares.utils.target_env_call(["luet", "install", "-y", COMMUNITY_REPO, "repo-updater/mocaccino-community-stable"])
 
     for pkg in selected_packages:
         libcalamares.utils.debug(f"Installing extra package: {pkg}")
