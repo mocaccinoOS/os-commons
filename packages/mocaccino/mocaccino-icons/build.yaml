@@ -6,6 +6,7 @@ steps:
 - install -Dm644 files/mOS_outlined_hl.png  /usr/share/icons/mOS-icons/mOS_outlined_hl.png
 - install -Dm644 files/mOS_outlined_hl_w.png  /usr/share/icons/mOS-icons/mOS_outlined_hl_w.png
 - install -Dm644 files/mOS_outlined_w.png   /usr/share/icons/mOS-icons/mOS_outlined_w.png
+- install -Dm644 files/mOS_outlined_m.png   /usr/share/icons/mOS-icons/mOS_outlined_m.png
 - install -Dm644 files/mOS_coffee_bean.png  /usr/share/icons/mOS-icons/mOS_coffee_bean.png
 - install -Dm644 files/mOS_outlined_hl.svg  /usr/share/icons/mOS-icons/scalable/apps/distributor-logo-symbolic.svg
 - install -Dm644 files/mOS_outlined_hl.svg  /usr/share/icons/mOS-icons/scalable/apps/start-here-symbolic.svg
