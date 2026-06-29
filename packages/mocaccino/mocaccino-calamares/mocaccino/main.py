@@ -7,6 +7,33 @@ import shutil
 import libcalamares
 import re
 
+def get_iso_label():
+    """
+    Determine the label of the booted live installation media.
+
+    The live environment keeps the ISO device mounted at
+    /tmp/mnt/device. The underlying block device is resolved
+    via findmnt and its filesystem label is obtained using
+    lsblk.
+
+    Returns the ISO label (for example MOCACCINOOS_KDE) or
+    None if the label cannot be determined.
+    """
+    if not os.path.ismount("/tmp/mnt/device"):
+        return None
+
+    try:
+        device = subprocess.check_output(
+            ["findmnt", "-n", "-o", "SOURCE", "/tmp/mnt/device"],
+            text=True
+        ).strip()
+
+        return subprocess.check_output(
+            ["lsblk", "-dn", "-o", "LABEL", device],
+            text=True
+        ).strip()
+    except Exception:
+        return None
 
 RE_IS_COMMENT = re.compile("^ *#")
 
