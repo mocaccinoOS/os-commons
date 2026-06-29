@@ -40,6 +40,11 @@ steps:
 # Copy UEFI loader to ISO tree AFTER safe entry exists
 - cp -rfv /boot/uefi/loader /
 
+# Place systemd-boot EFI binary for proper UEFI boot support
+- mkdir -p /boot/uefi/EFI/BOOT /EFI/BOOT
+- cp files/BOOTx64.EFI /boot/uefi/EFI/BOOT/BOOTX64.EFI
+- cp /boot/uefi/EFI/BOOT/BOOTX64.EFI /EFI/BOOT/BOOTX64.EFI
+
 includes:
 - /boot$|/boot/.*
 # Needed ISOIMAGE
