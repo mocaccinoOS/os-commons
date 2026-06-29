@@ -40,6 +40,14 @@ steps:
 # Copy UEFI loader to ISO tree AFTER safe entry exists
 - cp -rfv /boot/uefi/loader /
 
+# Download systemd-boot EFI binary so firmware recognizes the USB as UEFI bootable
+- curl -L -o systemd-boot.tar.gz https://github.com/ivandavidov/systemd-boot/releases/download/systemd-boot_26-May-2018/systemd-boot_26-May-2018.tar.gz
+- tar xf systemd-boot.tar.gz
+- mkdir -p /boot/uefi/EFI/BOOT
+- cp systemd-boot_26-May-2018/uefi_root/EFI/BOOT/BOOTx64.EFI /boot/uefi/EFI/BOOT/BOOTX64.EFI
+- mkdir -p /EFI/BOOT
+- cp /boot/uefi/EFI/BOOT/BOOTX64.EFI /EFI/BOOT/BOOTX64.EFI
+
 includes:
 - /boot$|/boot/.*
 # Needed ISOIMAGE
