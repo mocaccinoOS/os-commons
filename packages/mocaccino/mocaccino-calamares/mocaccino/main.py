@@ -287,7 +287,7 @@ def install_extra_packages():
 
     for pkg in selected_packages:
         libcalamares.utils.debug(f"Installing extra package: {pkg}")
-        libcalamares.utils.target_env_call(["luet", "install", "-y", pkg])
+        libcalamares.utils.target_env_call(["luet", "install", "-y", "--relax", pkg])
 
 # ==============================================================================
 # END NETINSTALL INTEGRATION
