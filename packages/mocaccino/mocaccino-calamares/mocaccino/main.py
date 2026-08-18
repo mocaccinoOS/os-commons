@@ -239,6 +239,7 @@ PACKAGE_NAME_MAP = {
     "KDevelop (Community)":        "apps/kdevelop",
     "VSCodium (Community)":        "apps/vscodium",
     "Bluefish (Community)":        "apps/bluefish",
+    "Google Antigravity (Community)": "apps/google-antigravity",
 }
 
 # Packages that require the community repository to be enabled first.
@@ -247,6 +248,7 @@ COMMUNITY_PACKAGES = {
     "apps/lutris", "apps/wine-staging",
     "apps/gimp", "apps/krita", "apps/inkscape",
     "apps/kdevelop", "apps/vscodium", "apps/bluefish",
+    "apps/google-antigravity",
 }
 
 COMMUNITY_REPO = "repository/mocaccino-community-stable"
