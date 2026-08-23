@@ -45,6 +45,11 @@ steps:
 - cp files/BOOTx64.EFI /boot/uefi/EFI/BOOT/BOOTX64.EFI
 - cp /boot/uefi/EFI/BOOT/BOOTX64.EFI /EFI/BOOT/BOOTX64.EFI
 
+# Place 32-bit systemd-boot EFI binary too, so 64-bit machines with a
+# 32-bit UEFI firmware (e.g. Bay Trail) can also boot the ISO
+- cp files/BOOTia32.EFI /boot/uefi/EFI/BOOT/BOOTIA32.EFI
+- cp /boot/uefi/EFI/BOOT/BOOTIA32.EFI /EFI/BOOT/BOOTIA32.EFI
+
 includes:
 - /boot$|/boot/.*
 # Needed ISOIMAGE
