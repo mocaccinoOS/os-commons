@@ -34,7 +34,7 @@ Presentation
     // START OF CUSTOM SLIDES
     // --------------------------------------------------
 
-    // MOS_1: MocaccinoOS Logo / Layers (Initial Image)
+    // MOS_1
     Slide {
         anchors.fill: parent
         Image {
@@ -43,7 +43,7 @@ Presentation
         }
     }
 
-    // MOS_2: Office Work
+    // MOS_2
     Slide {
         anchors.fill: parent
         Image {
@@ -52,7 +52,7 @@ Presentation
         }
     }
 
-    // MOS_3: Gaming
+    // MOS_3
     Slide {
         anchors.fill: parent
         Image {
@@ -61,7 +61,7 @@ Presentation
         }
     }
 
-    // MOS_4: Developer
+    // MOS_4
     Slide {
         anchors.fill: parent
         Image {
@@ -70,7 +70,7 @@ Presentation
         }
     }
 
-    // MOS_5: Conference Call
+    // MOS_5
     Slide {
         anchors.fill: parent
         Image {
@@ -79,7 +79,7 @@ Presentation
         }
     }
 
-    // MOS_6: Super Speed
+    // MOS_6
     Slide {
         anchors.fill: parent
         Image {
@@ -88,7 +88,7 @@ Presentation
         }
     }
 
-    // MOS_7: Secure
+    // MOS_7
     Slide {
         anchors.fill: parent
         Image {
@@ -97,29 +97,11 @@ Presentation
         }
     }
 
-    // MOS_8: SDR / Radio Astronomy
+    // MOS_8
     Slide {
         anchors.fill: parent
         Image {
             source: "images/MOS_8.jpg"
-            anchors.fill: parent
-        }
-    }
-
-    // MOS_9: Design & Create
-    Slide {
-        anchors.fill: parent
-        Image {
-            source: "images/MOS_9.jpg"
-            anchors.fill: parent
-        }
-    }
-
-    // MOS_10: Support Us / Donate (IMPORTANT: Donate link)
-    Slide {
-        anchors.fill: parent
-        Image {
-            source: "images/MOS_10.jpg"
             anchors.fill: parent
         }
     }
