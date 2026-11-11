@@ -24,7 +24,7 @@ interface:
 images:
     productLogo:         "mocaccino_logo.png"
     productIcon:         "mocaccino_logo.png"
-    productWelcome:      "welcome.jpg"
+    productWelcome:      "welcome.png"
 
 slideshow:               "show.qml"
 
