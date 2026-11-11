@@ -1,6 +1,10 @@
 ---
 componentName:  default
 
+windowSize:       1200px,690px
+windowExpanding:  fixed
+windowPlacement:  center
+
 strings:
     productName:         MocaccinoOS
     shortProductName:    Mocaccino
