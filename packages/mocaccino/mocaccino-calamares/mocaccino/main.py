@@ -209,7 +209,6 @@ def remove_installer_desktop(install_path):
 # not the "packageName" field, so we need this map to resolve them.
 PACKAGE_NAME_MAP = {
     # Browsers
-    "Chromium":                       "apps/chromium",
     "Brave (Community)":              "apps/brave",
     "Vivaldi (Community)":            "apps/vivaldi",
     "Opera (Community)":              "apps/opera",
