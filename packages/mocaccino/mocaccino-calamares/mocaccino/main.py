@@ -229,6 +229,7 @@ PACKAGE_NAME_MAP = {
     "NVIDIA Drivers":                 "kernel-modules/nvidia-drivers-lts",
     "Lutris (Community)":             "apps/lutris",
     "Wine Staging (Community)":       "apps/wine-staging",
+    "MangoHud (Community)":           "apps/mangohud",
     # Performance
     "x86-64-v3 Optimized Libraries":  "layers/X-v3",
     "sched_ext CPU Schedulers":       "apps/scx",
@@ -247,7 +248,7 @@ PACKAGE_NAME_MAP = {
 # Packages that require the community repository to be enabled first.
 COMMUNITY_PACKAGES = {
     "apps/freeoffice", "apps/libreoffice", "apps/calligra",
-    "apps/lutris", "apps/wine-staging",
+    "apps/lutris", "apps/wine-staging", "apps/mangohud",
     "apps/gimp", "apps/krita", "apps/inkscape",
     "apps/kdevelop", "apps/vscodium", "apps/bluefish",
     "apps/google-antigravity",
