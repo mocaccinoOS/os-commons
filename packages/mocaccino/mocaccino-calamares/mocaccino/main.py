@@ -230,6 +230,9 @@ PACKAGE_NAME_MAP = {
     "NVIDIA Drivers":              "kernel-modules/nvidia-drivers-lts",
     "Lutris (Community)":          "apps/lutris",
     "Wine Staging (Community)":    "apps/wine-staging",
+    # Performance
+    "x86-64-v3 Optimized Libraries": "layers/X-v3",
+    "sched_ext CPU Schedulers":                   "apps/scx",
     # Internationalization
     "Input Methods (Fcitx & IBus)":    "layers/input",
     "Spell Checking Dictionaries":     "app/myspell-dicts",
