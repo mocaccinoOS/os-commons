@@ -235,7 +235,7 @@ PACKAGE_NAME_MAP = {
     "sched_ext CPU Schedulers":                   "apps/scx",
     # Internationalization
     "Input Methods (Fcitx & IBus)":    "layers/input",
-    "Spell Checking Dictionaries":     "app/myspell-dicts",
+    "Spell Checking Dictionaries":     "apps/myspell-dicts",
     # Development
     "GCC":                         "devel/gcc",
     "CMake":                       "devel/cmake",
